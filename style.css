@@ -1,0 +1,17 @@
+/**
+ * @file    style.css
+ * @author  Robert Liu <rql@andrew.cmu.edu>
+ * @date    4/05/12
+ * @class   15-437
+ */
+
+html
+{
+  font-size: 12px;
+  font-family: courier new;
+}
+
+#container
+{
+  min-height: 100%;
+}
