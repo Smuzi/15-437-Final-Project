@@ -27,7 +27,6 @@
     <url-pattern>   *.do </url-pattern>
   </servlet-mapping>
 
-
   <servlet-mapping>
     <servlet-name>  controller-servlet </servlet-name>
     <url-pattern>   /home </url-pattern>

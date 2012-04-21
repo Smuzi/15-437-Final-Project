@@ -20,6 +20,7 @@ public class User
     private String email;
     private String phoneNumber;
     private String timezone;
+    private String zipcode;
 
     /* Getters */
     public int getId()             { return id; }
@@ -29,6 +30,7 @@ public class User
     public String getEmail()       { return email; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getTimezone()    { return timezone; }
+    public String getZipcode()     { return zipcode; }
 
     /* Setters */
 
@@ -40,5 +42,6 @@ public class User
     public void setPhoneNumber(String phoneNumber)
                                              { this.phoneNumber = phoneNumber; }
     public void setTimezone(String timezone) { this.timezone = timezone; }   
+    public void setZipcode(String zipcode)   { this.zipcode = zipcode; }
 }
 

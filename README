@@ -3,3 +3,11 @@
 Authors: 
 Jacob Olson (jholson)
 Robert Liu (rql)
+
+mc2xml:
+We use someone elses code for web-crawling channel listings. It's called mc2xml
+and is located at: http://mc2xml.hosterbox.net/
+Note that because this code is closed source we needed to do some hackish things
+(but no more hackish than parsing websites as we originally intended to do).
+Details are located in our xmltv parse script
+
