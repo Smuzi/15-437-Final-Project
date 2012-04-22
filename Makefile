@@ -11,7 +11,7 @@ all:
 
 database:
 	mysql finalwebapp < ./WEB-INF/reset_static_tables.sql
-	#mysqlimport --local finalwebapp ./WEB-INF/tvshow.txt
+	mysqlimport -v --local finalwebapp ./WEB-INF/tvshow.txt
 
 clean:
 	rm -rf ./WEB-INF/classes/*

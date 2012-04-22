@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS tvshow;
+DROP TABLE IF EXISTS tvshow_array_airingids;
+DROP TABLE IF EXISTS tvshow_array_reviewids;
 
 CREATE TABLE tvshow
 (

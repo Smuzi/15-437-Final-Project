@@ -1,9 +1,16 @@
 /**
  * @file    style.css
  * @author  Robert Liu <rql@andrew.cmu.edu>
+ * @author  Jacob Olson <jholson@andrew.cmu.edu>
  * @date    4/05/12
  * @class   15-437
  */
+
+*
+{
+  border-width: 1px;
+  border-style: dashed;
+}
 
 html
 {
@@ -13,5 +20,106 @@ html
 
 #container
 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
   min-height: 100%;
+}
+
+/* <body> with two columns */
+
+.two-col-body #header
+{
+  margin-bottom: 20px;
+}
+
+.two-col-body #search-bar
+{
+  display: inline-block;
+  margin: 0px;
+  min-width: 700px;
+}
+
+.two-col-body #search-bar form
+{
+  width: 100%;
+  margin: 0px;
+}
+
+.two-col-body #search-bar
+{
+  height: 30px;
+}
+
+.two-col-body .search-box
+{
+  overflow: hidden;
+}
+
+.two-col-body .search-box input
+{
+  height: 100%;
+  width: 100%;
+}
+
+.two-col-body .search-button
+{
+  float: right;
+  margin: 0px 10px;
+  height: 100%;
+  width: 150px;
+}
+
+.two-col-body #login-link
+{
+  display: inline-block;
+  width: 280px;
+  text-align: right;
+}
+
+.two-col-body #main-content
+{
+  min-height: 500px;
+  width: 100%;
+}
+
+.two-col-body #show-sidebar
+{
+  float: right;
+  width: 250px;
+}
+
+.two-col-body #show-sidebar li
+{
+  overflow: hidden;
+  clear: both;
+}
+
+.two-col-body #show-sidebar a
+{
+  float: left;
+  margin-right: 10px;
+}
+
+.two-col-body #show-sidebar img
+{
+  height: 50px;
+  width: 50px;
+}
+
+.two-col-body #show-sidebar span
+{
+  display: table-cell;
+  vertical-align: top;
+}
+
+.two-col-body #news
+{
+  float: left;
+  width: 740px;
+}
+
+.two-col-body #news-image
+{
+  text-align: center;
 }
