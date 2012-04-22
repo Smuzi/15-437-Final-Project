@@ -8,9 +8,10 @@ SRC = ./WEB-INF/src/controller/* \
 
 all:
 	javac -Werror -classpath $(CLASSPATH) -d $(OUTPUT) $(SRC)
+
 database:
 	mysql finalwebapp < ./WEB-INF/reset_static_tables.sql
-	mysqlimport --local finalwebapp ./WEB-INF/tvshow.txt
+	#mysqlimport --local finalwebapp ./WEB-INF/tvshow.txt
 
 clean:
 	rm -rf ./WEB-INF/classes/*

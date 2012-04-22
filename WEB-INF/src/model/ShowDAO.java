@@ -1,6 +1,7 @@
 /**
  * @file      ShowDAO.java
  * @author    Robert Liu <rql@andrew.cmu.edu>
+ * @author    Jacob Olson <jholson@andrew.cmu.edu>
  * @date      4/05/2012
  * @class     15-437
  */
