@@ -1,4 +1,4 @@
-1	Community	foo
-2	Modern Family	bar
-3	How I Met Your Mother	paz
-4	Burn Notice	qux	
+1	description_community	1	community	1	1
+2	description_modern	2	modern family	2	2
+3	description_mother	3	how i met your mother	3	3
+4	description_burn	4	burn notice	4	4

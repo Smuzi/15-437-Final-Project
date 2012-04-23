@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
          version="2.4">
 
-  <display-name>MyLiveActionList</display-name>
+  <display-name>KompoZer Sucks</display-name>
   <description>
     Final Project for 15-437
   </description>
@@ -26,7 +26,6 @@
     <servlet-name>  controller-servlet </servlet-name>
     <url-pattern>   *.do </url-pattern>
   </servlet-mapping>
-
 
   <servlet-mapping>
     <servlet-name>  controller-servlet </servlet-name>

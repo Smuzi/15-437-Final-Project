@@ -1,52 +1,33 @@
-DROP TABLE IF EXISTS myuser;
 DROP TABLE IF EXISTS tvshow;
-DROP TABLE IF EXISTS airing;
-DROP TABLE IF EXISTS network;
-DROP TABLE IF EXISTS image;
-DROP TABLE IF EXISTS review;
-
-CREATE TABLE myuser
-(
-	id		int,
-	username 	varchar(20),
-	password	varchar(30),
-	email		varchar(50),
-	phoneNumber	varchar(15),
-	timezone	varchar(20)
-);
+DROP TABLE IF EXISTS tvshow_array_airingids;
+DROP TABLE IF EXISTS tvshow_array_reviewids;
 
 CREATE TABLE tvshow
 (
-	id		int,
-	description	varchar(1000),
-	imageId		int
+	id		int not NULL auto_increment,
+	description	varchar(1000) default NULL,
+	imageId		int not NULL default 0,
+	showName	varchar(255) default NULL,
+	airingIds	tinyint not NULL default 0,
+	reviewIds	tinyint not NULL default 0,
+
+	primary key (id)
 );
 
-CREATE TABLE airing
+CREATE TABLE tvshow_array_airingids
 (
-	id		int,
-	showId		int,
-	networkId	int,
-	airTime		date
+	id		int not NULL,
+	__pos__		int not NULL,
+	airingIds	int not NULL default 0,
+
+	primary key (id, __pos__)
 );
 
-CREATE TABLE network
+CREATE TABLE tvshow_array_reviewids
 (
-	id		int,
-	name		varchar(20)
-);
+	id		int not NULL,
+	__pos__		int not NULL,
+	reviewIds	int not NULL default 0,
 
-CREATE TABLE image
-(
-	id		int
+	primary key (id, __pos__)
 );
-
-CREATE TABLE review
-(
-	id		int,
-	showId		int,
-	userId		int,
-	text		varchar(10000),
-	rating		int
-);
-	
