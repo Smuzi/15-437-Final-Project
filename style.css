@@ -18,7 +18,28 @@ html
   font-family: courier new;
 }
 
-#container
+/* <form> settings */
+form label
+{
+  display: block;
+  width: 300px;
+  margin: 5px 0px;
+}
+
+form input
+{
+  display: inline-block;
+  width: 360px;
+  margin 10px 5px;
+}
+
+form .submit-button
+{
+  margin: 10px 0px;
+  width: 100px;
+}
+
+.container
 {
   margin-left: auto;
   margin-right: auto;
@@ -26,49 +47,67 @@ html
   min-height: 100%;
 }
 
-/* <body> with two columns */
+/* <ul> stuff */
 
-.two-col-body #header
+ul
 {
-  margin-bottom: 20px;
+  padding: 0px;
 }
 
-.two-col-body #search-bar
+/* <li> stuff */
+li
+{
+  clear: both;
+}
+
+/* Search bar stuff (in both home.jsp and search.jsp) */
+
+#search-bar
 {
   display: inline-block;
   margin: 0px;
   min-width: 700px;
+  height: 30px;
 }
 
-.two-col-body #search-bar form
+#search-bar form
 {
   width: 100%;
   margin: 0px;
 }
 
-.two-col-body #search-bar
-{
-  height: 30px;
-}
-
-.two-col-body .search-box
+.search-box
 {
   overflow: hidden;
 }
 
-.two-col-body .search-box input
+.search-box input
 {
   height: 100%;
   width: 100%;
+  vertical-align: middle;
 }
 
-.two-col-body .search-button
+.search-button
 {
   float: right;
   margin: 0px 10px;
   height: 100%;
   width: 150px;
 }
+
+#header
+{
+  margin-bottom: 20px;
+}
+
+#main-content
+{
+  min-height: 500px;
+  width: 100%;
+}
+
+/* <body> with two columns */
 
 .two-col-body #login-link
 {
@@ -77,22 +116,10 @@ html
   text-align: right;
 }
 
-.two-col-body #main-content
-{
-  min-height: 500px;
-  width: 100%;
-}
-
 .two-col-body #show-sidebar
 {
   float: right;
   width: 250px;
-}
-
-.two-col-body #show-sidebar li
-{
-  overflow: hidden;
-  clear: both;
 }
 
 .two-col-body #show-sidebar a
@@ -122,4 +149,82 @@ html
 .two-col-body #news-image
 {
   text-align: center;
+}
+
+/* For login_reg.jsp */
+
+#login_reg #login
+{
+  display: inline-block;
+  width: 400px;
+}
+
+#login_reg #register
+{
+  float: right;
+  width: 550px;
+}
+
+/* search.jsp */
+#search #results
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+}
+
+#search .search-result-img
+{
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+  width: 150px;
+}
+
+#search .search-result-info
+{
+  display: inline-block;
+  vertical-align: middle;
+  width: 600px;
+}
+
+#search .search-result-description
+{
+  height: 200px;
+}
+
+/* show.jsp */
+
+#show #show-img
+{
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 350px;
+}
+
+#show #show-img img
+{
+  height: 250px;
+  width: 250px;
+}
+
+#show #show-description
+{
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+#show #show-tabs li
+{
+  display: inline-block;
+}
+
+#show #show-info-container div
+{
+  /* Hide them until we show them manually */
+  display: none;
 }

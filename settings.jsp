@@ -13,6 +13,16 @@
 
   <body>
     <div id="container">
+      <h3>Account Settings</h3>
+      <form id="settings-form">
+        <label>Email</label>
+        <input type="text" name="email" />
+        <br />
+
+        <label>Phone Number (for calendar notifications)</label>
+        <input type="text" name="email" />
+        <br />
+      </form>
     </div>
   </body>
 </html>

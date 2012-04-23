@@ -13,11 +13,12 @@
   </head>
 
   <body class="two-col-body">
-    <div id="container">
+    <div class="container">
       <div id="header">
         <div id="search-bar">
           <form action="search.do">
-            <input class="search-button" type="submit" name="action" value="Search" />
+            <input class="search-button" type="submit" name="action" 
+                   value="Search" />
             <div class="search-box">
               <input type="text" name="query" />
             </div>
@@ -38,7 +39,7 @@
             <li>
               <a href="foo">
                 <img class="show-list-image"
-                src="./amelie_home.jpg">
+                     src="./amelie_home.jpg">
                 </img>
               </a>
               <span>
@@ -49,7 +50,7 @@
             <li>
               <a href="foo">
                 <img class="show-list-image"
-                src="./amelie_home.jpg">
+                     src="./amelie_home.jpg">
                 </img>
               </a>
               <span>
@@ -60,7 +61,7 @@
             <li>
               <a href="foo">
                 <img class="show-list-image"
-                src="./amelie_home.jpg">
+                     src="./amelie_home.jpg">
                 </img>
               </a>
               <span>
@@ -71,7 +72,7 @@
             <li>
               <a href="foo">
                 <img class="show-list-image"
-                src="./amelie_home.jpg">
+                     src="./amelie_home.jpg">
                 </img>
               </a>
               <span>
