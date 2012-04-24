@@ -9,7 +9,7 @@
 *
 {
   border-width: 1px;
-  border-style: dashed;
+  border-style: solid;
 }
 
 html
@@ -56,103 +56,120 @@ form .submit-button
 
 ul
 {
+  list-style-type: none;
   padding: 0px;
+  margin: 0px;
 }
 
 /* <li> stuff */
 li
 {
+  margin-bottom: 5px;
   overflow: hidden;
   clear: both;
 }
 
-/* Search bar stuff (in both home.jsp and search.jsp) */
+/* Header stuff */
+#header
+{
+  margin-bottom: 10px;
+}
+
+#logo-container
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo-container a
+{
+  display: block;
+  height: 36px;
+}
+
+#logo-container img
+{
+  max-height: 44px;
+  max-width: 150px;
+}
 
 #search-bar
 {
   display: inline-block;
-  margin: 0px;
-  min-width: 700px;
+  margin: 0px 10px;
+  width: 550px;
   height: 30px;
 }
 
 #search-bar form
 {
-  width: 100%;
   margin: 0px;
+  height: 100%;
+  width: 100%;
 }
 
 .search-box
 {
-  overflow: hidden;
-}
-
-.search-box input
-{
   height: 100%;
-  width: 100%;
-  vertical-align: middle;
+  width: 400px;
+  margin-left: 5px;
 }
 
 .search-button
 {
-  float: right;
-  margin: 0px 10px;
+  display: inline-block;
   height: 100%;
-  width: 150px;
+  width: 130px;
 }
 
-#header
+#account-misc
 {
-  margin-bottom: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 230px;
 }
+
+/* Main content */
 
 #main-content
 {
-  min-height: 500px;
   width: 100%;
 }
 
-/* <body> with two columns */
+/* home.jsp */
 
-.two-col-body #login-link
-{
-  display: inline-block;
-  width: 280px;
-  text-align: right;
-}
-
-.two-col-body #show-sidebar
+#home #show-sidebar
 {
   float: right;
   width: 250px;
 }
 
-.two-col-body #show-sidebar a
+#home #show-sidebar .show-list-image-container
 {
-  float: left;
+  display: inline-block;
   margin-right: 10px;
+  vertical-align: middle;
 }
 
-.two-col-body #show-sidebar img
+#home #show-sidebar img
 {
   height: 50px;
   width: 50px;
 }
 
-.two-col-body #show-sidebar span
+#home #show-sidebar a
 {
-  display: table-cell;
-  vertical-align: top;
+  display: inline-block;
 }
 
-.two-col-body #news
+#home #news
 {
   float: left;
   width: 740px;
 }
 
-.two-col-body #news-image
+#home #news-image
 {
   text-align: center;
 }
@@ -172,26 +189,34 @@ li
 }
 
 /* search.jsp */
-#search #results
+#search ol
 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 900px;
+  padding: 0px;
+}
+
+#search .search-result-body
+{
+  display: table;
+}
+
+#search .result-img-container
+{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 200px;
 }
 
 #search .search-result-img
 {
-  display: inline-block;
-  vertical-align: middle;
   height: 150px;
   width: 150px;
 }
 
 #search .search-result-info
 {
-  display: inline-block;
-  vertical-align: middle;
-  width: 600px;
+  float: right;
+  width: 780px;
 }
 
 #search .search-result-description
@@ -236,11 +261,6 @@ li
 }
 
 /* profile.jsp */
-#profile #header a
-{
-  float: right;
-  margin-left: 5px;
-}
 
 #profile #profile-tabs li
 {

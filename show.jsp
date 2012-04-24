@@ -5,6 +5,8 @@
   @class  15-437
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <%-- TODO: Switch this to autogenerate an appropriate title --%>
@@ -32,11 +34,43 @@
   <body id="show">
     <div class="container">
       <div id="header">
-        <h3>Modern Family</h3> 
-        5.0/5.0
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
+        <div id="search-bar">
+          <form action="search.do">
+            <input class="search-box" type="text" name="query" />
+            <input class="search-button" type="submit" name="action" 
+                   value="Search" />
+          </form> 
+        </div>
+
+        <div id="account-misc">
+          <c:choose>
+            <c:when test="${empty user}">
+              <span>
+                <a href="login.do">Login/Register</a>
+              </span>
+            </c:when>
+            <c:otherwise>
+              <span>
+                <a href="logout.do">Logout</a>
+                <a href="settings.do">Account Settings</a>
+              </span>
+            </c:otherwise>
+          </c:choose>
+        </div>
       </div>
 
       <div id="main-content">
+        <div id="show-header">
+          <h3>Modern Family</h3> 
+          5.0/5.0
+        </div>
+
         <div id="show-img">
           <img src="./amelie_home.jpg">
           </img>
