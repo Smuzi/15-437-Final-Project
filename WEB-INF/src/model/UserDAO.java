@@ -71,7 +71,7 @@ public class UserDAO extends GenericDAO<User>
         }
     }
 
-    public User readByUserName(Object key) throws RollbackException
+    public User readByUsername(Object key) throws RollbackException
     {
         String username = (String) key;
 

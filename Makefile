@@ -2,7 +2,8 @@ CLASSPATH = :./WEB-INF/lib/*
 OUTPUT = ./WEB-INF/classes/
 SRC = ./WEB-INF/src/controller/* \
       ./WEB-INF/src/model/* \
-      ./WEB-INF/src/databean/*
+      ./WEB-INF/src/databean/* \
+      ./WEB-INF/src/formbean/*
 
 .PHONY: all database clean
 
