@@ -15,7 +15,7 @@
 
   <body>
     <div class="container">
-      <jsp:include page="settings.jsp" />
+      <jsp:include page="header.jsp" />
 
       <h3>Account Settings</h3>
       <form id="settings-form">

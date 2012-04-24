@@ -10,16 +10,16 @@
 
 <div id="header">
   <div id="logo-container">
-    <a href="home.jsp">
-      <img src="bluetube.jpg"> 
-      </a>
-    </div>
+    <a href="home.do">
+      <img src="bluetube.jpg" />
+    </a>
+  </div>
 
-    <div id="search-bar">
-      <form action="search.do">
-        <input class="search-box" type="text" name="query" />
-        <input class="search-button" type="submit" name="action" 
-              value="Search" />
+  <div id="search-bar">
+    <form action="search.do">
+      <input class="search-box" type="text" name="query" />
+      <input class="search-button" type="submit" name="action" 
+             value="Search" />
     </form> 
   </div>
 
