@@ -18,9 +18,13 @@ import org.genericdao.RollbackException;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import formbean.SearchForm;
 import model.Model;
 
 public class SearchAction extends Action {
+    private FormBeanFactory<SearchForm> formBeanFactory =
+            FormBeanFactory.getInstance(SearchForm.class);
+
     public SearchAction(Model model) {}
 
     public String getName() { return "search.do"; }
@@ -31,9 +35,19 @@ public class SearchAction extends Action {
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors", errors);
 
-        /* TODO In here, we need to generate search page content. */
 
         try {
+            SearchForm form = formBeanFactory.create(request);
+            request.setAttribute("form", form);
+
+            /* See if there are any validation errors in the form. */
+            errors.addAll(form.getValidationErrors());
+            if (errors.size() != 0) {
+                return "search.jsp";
+            }
+
+            /* TODO In here, we need to generate search page content. */
+
             return "search.jsp";
         } catch (Exception e) {
             errors.add(e.getClass().getName() + ": " + e.getMessage());

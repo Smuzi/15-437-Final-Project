@@ -6,6 +6,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,12 +19,14 @@
       <jsp:include page="header.jsp" />
 
       <!-- TODO Fix so that errors display in proper section --!>
-      <c:forEach var="error" items="${errors}">
-        <span class="error-text">${error}</span><br/>
-      </c:forEach>
 
       <!-- This must go before login -->
       <div id="register">
+        <c:if test="${(fn:length(registerErrors)) > 0}">
+          <c:set var="errors" value="${registerErrors}" scope="request" />
+          <jsp:include page="errorlist.jsp" />
+        </c:if>
+
         <h2>Register</h2>
         <form id="register-form" method="POST" action="register.do">
           <label>Username</label>
@@ -58,8 +61,13 @@
       </div>
 
       <div id="login">
+        <c:if test="${(fn:length(loginErrors)) > 0}">
+          <c:set var="errors" value="${loginErrors}" scope="request" />
+          <jsp:include page="errorlist.jsp" />
+        </c:if>
+
         <h2>Login</h2>
-        <form id="login-form" method="POST">
+        <form id="login-form" method="POST" action="login.do">
           <label>Username</label>
           <input type="text" name="username" tabindex=1
                  value="${loginForm.username}" />

@@ -4,6 +4,7 @@
   @date   4/05/2012
   @class  15-437
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -15,9 +16,7 @@
   <div id="error">
     Errors:<br/>
 
-    <c:forEach var="error" items="${errors}">
-      <span class="error-text">${error}</span><br/>
-    </c:forEach>
+    <jsp:include page="errorlist.jsp" />
   </div>
 </div>
 </div>

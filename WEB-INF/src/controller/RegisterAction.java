@@ -43,7 +43,7 @@ public class RegisterAction extends Action {
         }
 
         List<String> errors = new ArrayList<String>();
-        request.setAttribute("errors", errors);
+        request.setAttribute("registerErrors", errors);
 
         try {
             RegisterForm form = formBeanFactory.create(request);

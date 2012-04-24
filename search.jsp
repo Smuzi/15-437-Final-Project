@@ -6,6 +6,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -18,7 +19,12 @@
       <jsp:include page="header.jsp" />
 
       <div id="main-content">
-        <h1>Search results for "blah"</h1>
+        <c:if test="${(fn:length(errors)) == 0}">
+          <h1>Search results for "${form.query}"</h1>
+        </c:if>
+
+        <jsp:include page="errorlist.jsp" />
+
         <ol>
 
           <li class="search-result">
