@@ -12,7 +12,27 @@
   </head>
 
   <body>
-    <div id="container">
+    <div class="container">
+      <div id="header">
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
+        <div id="search-bar">
+          <form action="search.do">
+            <input class="search-box" type="text" name="query" />
+            <input class="search-button" type="submit" name="action" 
+                   value="Search" />
+          </form> 
+        </div>
+
+        <div id="account-misc">
+          <a href="login_reg.jsp">Login/Register</a>
+        </div>
+      </div>
+
       <h3>Account Settings</h3>
       <form id="settings-form">
         <label>Email</label>

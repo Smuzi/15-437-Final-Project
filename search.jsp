@@ -14,24 +14,37 @@
   <body id="search">
     <div class="container">
       <div id="header">
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
         <div id="search-bar">
           <form action="search.do">
+            <input class="search-box" type="text" name="query" />
             <input class="search-button" type="submit" name="action" 
                    value="Search" />
-            <div class="search-box">
-              <input type="text" name="query" />
-            </div>
-          </form>
+          </form> 
         </div>
 
-        <div id="results">
-          <h1>Search results for "blah"</h1>
-          <ol>
-            <li class="search-result">
-              <div>Show Name#1</div>  
-              <img class="search-result-img"
-                   src="./amelie_home.jpg">
-              </img>
+        <div id="account-misc">
+          <a href="login_reg.jsp">Login/Register</a>
+        </div>
+      </div>
+
+      <div id="main-content">
+        <h1>Search results for "blah"</h1>
+        <ol>
+
+          <li class="search-result">
+            <div>Show Name#1</div>  
+            <div class="search-result-body">
+              <div class="result-img-container">
+                <img class="search-result-img"
+                     src="./amelie_home.jpg">
+                </img>
+              </div>
               <div class="search-result-info">
                 <div class="search-result-description">
                   foo
@@ -40,25 +53,29 @@
                   4/23/12
                 </div> 
               </div>
-            </li>
+            <div>
+          </li>
 
-            <li class="search-result">
-              <div>Show Name#2</div>  
-              <img class="search-result-img"
-                   src="./amelie_home.jpg">
-              </img>
+          <li class="search-result">
+            <div>Show Name#2</div>  
+            <div class="search-result-body">
+              <div class="result-img-container">
+                <img class="search-result-img"
+                     src="./amelie_home.jpg">
+                </img>
+              </div>
               <div class="search-result-info">
                 <div class="search-result-description">
-                  foo
+                  bar
                 </div> 
                 <div class="search-result-date">
                   4/23/12
                 </div> 
               </div>
-            </li>
-          </ol> 
-        </div>
+            <div>
+          </li>
 
+        </ol> 
       </div>
     </div>
   </body>

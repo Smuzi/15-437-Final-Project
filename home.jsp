@@ -12,72 +12,66 @@
     <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
 
-  <body class="two-col-body">
+  <body id="home">
     <div class="container">
       <div id="header">
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
         <div id="search-bar">
           <form action="search.do">
+            <input class="search-box" type="text" name="query" />
             <input class="search-button" type="submit" name="action" 
                    value="Search" />
-            <div class="search-box">
-              <input type="text" name="query" />
-            </div>
           </form> 
         </div>
 
-        <div id="login-link">
-          <!-- TODO switch to action -->
-          <span>
-            <a href="login_reg.jsp">Login/Register</a>
-          </span>
+        <div id="account-misc">
+          <a href="login_reg.jsp">Login/Register</a>
         </div>
       </div>
 
       <div id="main-content">
         <div id="show-sidebar">
           <ul id="top-show-list">
+            <div>Most popular shows:</div>
             <li>
-              <a href="foo">
+              <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
                      src="./amelie_home.jpg">
                 </img>
               </a>
-              <span>
-                foo
-              </span>
+              <a href="foo">foo</a>
             </li>
 
             <li>
-              <a href="foo">
+              <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
                      src="./amelie_home.jpg">
                 </img>
               </a>
-              <span>
-                bar
-              </span>
+              <a href="bar">bar</a>
             </li>
 
             <li>
-              <a href="foo">
+              <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
                      src="./amelie_home.jpg">
                 </img>
               </a>
-              <span>
-                qux
-              </span>
+              <a href="qux">qux</a>
             </li>
 
             <li>
-              <a href="foo">
+              <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
                      src="./amelie_home.jpg">
                 </img>
               </a>
-              <span>
-                frob
-              </span>
+              <a href="frob">frob</a>
             </li>
           </ul>
         </div>

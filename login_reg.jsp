@@ -13,10 +13,30 @@
 
   <body id="login_reg">
     <div class="container">
+      <div id="header">
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
+        <div id="search-bar">
+          <form action="search.do">
+            <input class="search-box" type="text" name="query" />
+            <input class="search-button" type="submit" name="action" 
+                   value="Search" />
+          </form> 
+        </div>
+
+        <div id="account-misc">
+          <a href="login_reg.jsp">Login/Register</a>
+        </div>
+      </div>
+
       <!-- This must go before login -->
       <div id="register">
         <h2>Register</h2>
-        <form id="register-form">
+        <form id="register-form" method="POST">
           <label>Username</label>
           <input type="text" name="username" />
           <br />
@@ -40,7 +60,7 @@
 
       <div id="login">
         <h2>Login</h2>
-        <form id="login-form">
+        <form id="login-form" method="POST">
           <label>Username</label>
           <input type="text" name="username" />
           <br />

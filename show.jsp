@@ -32,11 +32,31 @@
   <body id="show">
     <div class="container">
       <div id="header">
-        <h3>Modern Family</h3> 
-        5.0/5.0
+        <div id="logo-container">
+          <a href="home.jsp">
+            <img src="bluetube.jpg"> 
+          </a>
+        </div>
+
+        <div id="search-bar">
+          <form action="search.do">
+            <input class="search-box" type="text" name="query" />
+            <input class="search-button" type="submit" name="action" 
+                   value="Search" />
+          </form> 
+        </div>
+
+        <div id="account-misc">
+          <a href="login_reg.jsp">Login/Register</a>
+        </div>
       </div>
 
       <div id="main-content">
+        <div id="show-header">
+          <h3>Modern Family</h3> 
+          5.0/5.0
+        </div>
+
         <div id="show-img">
           <img src="./amelie_home.jpg">
           </img>
