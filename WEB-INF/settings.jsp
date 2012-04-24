@@ -18,14 +18,26 @@
       <jsp:include page="header.jsp" />
 
       <h3>Account Settings</h3>
-      <form id="settings-form">
+      <jsp:include page="errorlist.jsp" />
+
+      <form id="settings-form" method="POST" action="settings.do">
         <label>Email</label>
-        <input type="text" name="email" />
+        <input type="text" name="email" value="${form.email}" />
         <br />
 
         <label>Phone Number (for calendar notifications)</label>
-        <input type="text" name="email" />
+        <input type="text" name="phoneNumber" value="${form.phoneNumber}" />
         <br />
+
+        <label>Time Zone</label>
+        <input type="text" name="timeZone" value="${form.timeZone}" />
+        <br />
+
+        <label>Zipcode</label>
+        <input type="text" name="zipcode" value="${form.zipcode}" />
+        <br />
+
+        <input type="submit" value="Update settings" />
       </form>
     </div>
   </body>

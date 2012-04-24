@@ -14,13 +14,18 @@ import org.genericdao.PrimaryKey;
 @PrimaryKey("id")
 public class Show
 {
+    /* The maximum lengths of the data fields */
+    public static final int showNameLength = 255;
+    public static final int descriptionLength = 1000;
+
     /* Fields */
     private int id;
     private int imageId;
     private int[] airingIds;
     private int[] reviewIds;
+    @MaxSize(showNameLength)
     private String showName;
-    @MaxSize(1000)
+    @MaxSize(descriptionLength)
     private String description;
 
     /* Getters */
@@ -34,8 +39,8 @@ public class Show
     /* Setters */
     public void setId(int id)                 { this.id = id; }   
     public void setImageId(int imageId)       { this.imageId = imageId; }
-    public void setAiringIds(int[] airingIds) { this.airingIds = airingIds; }   
-    public void setReviewIds(int[] reviewIds) { this.reviewIds = reviewIds; }   
+    public void setAiringIds(int[] airingIds) { this.airingIds = airingIds; }
+    public void setReviewIds(int[] reviewIds) { this.reviewIds = reviewIds; }
     public void setShowName(String showName)  { this.showName = showName; }   
     public void setDescription(String description) 
                                             { this.description = description; }
