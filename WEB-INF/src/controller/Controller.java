@@ -7,6 +7,10 @@
 
 package controller;
 
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import databean.User;
 import model.Model;
 
 public class Controller extends HttpServlet
@@ -25,10 +30,27 @@ public class Controller extends HttpServlet
     // somesuch. Check the documentation on Serializable
     private static final long serialVersionUID = 13L;
 
+    private Set<String> loginRequired;
+
     // Initializes our model and actions
     public void init() throws ServletException
     {
+        String[] array = {"settings.jsp",
+                          "settings.do",
+                          "profile.jsp",
+                          "profile.do"};
+
+        loginRequired = new HashSet<String>(Arrays.asList(array));
+
         Model model = new Model(getServletConfig());
+
+        Action.add(new LoginAction(model));
+        Action.add(new LogoutAction(model));
+        Action.add(new RegisterAction(model));
+        Action.add(new HomeAction(model));
+        Action.add(new ProfileAction(model));
+        Action.add(new SearchAction(model));
+        Action.add(new SettingsAction(model));
     }
 
     // Handles POST requests
@@ -52,19 +74,24 @@ public class Controller extends HttpServlet
     // Helper function does the bulk of the work for requests
     private String performTheAction(HttpServletRequest request)
     {
-        HttpSession session = request.getSession(true);
-        String servletPath = request.getServletPath();
-        String action = getActionName(servletPath);
+        HttpSession session     = request.getSession(true);
+        String      servletPath = request.getServletPath();
+        User        user        = (User)session.getAttribute("user");
+        String      action      = getActionName(servletPath);
 
-        if (action.equals("home"))
-        {
-            // TODO: temporary
-            return "home.jsp";
+        /* If no user is logged in and they're trying to do anything but
+           view the home page or register, kindly redirect them to the login
+           action. */
+        if (user == null && loginRequired.contains(action)) {
+            return Action.perform("login.do", request);
         }
-        else
-        {
-            return null;
+
+        /* User is at the root of our web app */
+        if (action.equals("home")) {
+            return Action.perform("home.do", request);
         }
+
+        return Action.perform(action, request);
     }
 
     /**
@@ -82,6 +109,11 @@ public class Controller extends HttpServlet
         {
             response.sendError(HttpServletResponse.SC_NOT_FOUND,
                                request.getServletPath());
+            return;
+        }
+
+        if (nextPage.endsWith(".do")) {
+            response.sendRedirect(nextPage);
             return;
         }
 

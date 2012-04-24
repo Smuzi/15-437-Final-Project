@@ -18,6 +18,11 @@ html
   font-family: courier new;
 }
 
+/* error text */
+.error-text {
+    color: red;
+}
+
 /* <form> settings */
 form label
 {

@@ -5,6 +5,8 @@
   @class  15-437
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Profile</title>
@@ -46,15 +48,26 @@
         </div>
 
         <div id="account-misc">
-          <a href="logout.do">Logout</a>
-          <a href="account.do">Account Settings</a>
+          <c:choose>
+            <c:when test="${empty user}">
+              <span>
+                <a href="login.do">Login/Register</a>
+              </span>
+            </c:when>
+            <c:otherwise>
+              <span>
+                <a href="logout.do">Logout</a>
+                <a href="settings.do">Account Settings</a>
+              </span>
+            </c:otherwise>
+          </c:choose>
         </div>
       </div>
 
       <div id="main-content">
         <div id="header">
           <span>
-            some username
+            <span>${user.username}</span>
           </span>
         </div>
 
