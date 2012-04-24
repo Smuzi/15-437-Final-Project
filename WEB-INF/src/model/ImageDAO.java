@@ -15,12 +15,14 @@ import databean.Image;
 
 public class ImageDAO extends GenericDAO<Image>
 {
-    // Errors
-    final String ERROR_COMMIT_FAILED = "Transaction.commit() failed silently";
-
     public ImageDAO(String tableName, ConnectionPool connectionPool)
         throws DAOException
     {
         super(Image.class, tableName, connectionPool);
+    }
+
+    @Override
+    public void create(Image image) throws RollbackException {
+        super.createAutoIncrement(image);
     }
 }
