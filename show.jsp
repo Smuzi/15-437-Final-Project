@@ -13,7 +13,8 @@
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
-      var showing = "foo";
+      /* It's initially showing show-times */
+      var showing = "#show-times";
 
       function showDiv(elemName)
       {

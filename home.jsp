@@ -28,7 +28,7 @@
         <div id="login-link">
           <!-- TODO switch to action -->
           <span>
-            <a href="login.jsp">Login/Register</a>
+            <a href="login_reg.jsp">Login/Register</a>
           </span>
         </div>
       </div>
