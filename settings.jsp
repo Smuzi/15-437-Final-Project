@@ -15,37 +15,7 @@
 
   <body>
     <div class="container">
-      <div id="header">
-        <div id="logo-container">
-          <a href="home.jsp">
-            <img src="bluetube.jpg"> 
-          </a>
-        </div>
-
-        <div id="search-bar">
-          <form action="search.do">
-            <input class="search-box" type="text" name="query" />
-            <input class="search-button" type="submit" name="action" 
-                   value="Search" />
-          </form> 
-        </div>
-
-        <div id="account-misc">
-          <c:choose>
-            <c:when test="${empty user}">
-              <span>
-                <a href="login.do">Login/Register</a>
-              </span>
-            </c:when>
-            <c:otherwise>
-              <span>
-                <a href="logout.do">Logout</a>
-                <a href="settings.do">Account Settings</a>
-              </span>
-            </c:otherwise>
-          </c:choose>
-        </div>
-      </div>
+      <jsp:include page="settings.jsp" />
 
       <h3>Account Settings</h3>
       <form id="settings-form">
