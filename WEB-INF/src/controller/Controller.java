@@ -35,9 +35,7 @@ public class Controller extends HttpServlet
     // Initializes our model and actions
     public void init() throws ServletException
     {
-        String[] array = {"settings.jsp",
-                          "settings.do",
-                          "profile.jsp",
+        String[] array = {"settings.do",
                           "profile.do"};
 
         loginRequired = new HashSet<String>(Arrays.asList(array));
