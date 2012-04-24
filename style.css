@@ -57,6 +57,7 @@ ul
 /* <li> stuff */
 li
 {
+  overflow: hidden;
   clear: both;
 }
 
@@ -223,8 +224,35 @@ li
   display: inline-block;
 }
 
-#show #show-info-container div
+#show #show-info-container #show-reviews
 {
   /* Hide them until we show them manually */
+  display: none;
+}
+
+/* profile.jsp */
+#profile #header a
+{
+  float: right;
+  margin-left: 5px;
+}
+
+#profile #profile-tabs li
+{
+  display: inline-block;
+}
+
+#profile #calendar
+{
+  /* TODO: placeholder dimensions */
+  margin-left: auto;
+  margin-right: auto;
+  height: 500px;
+  width: 800px;
+}
+
+#profile-main-container #show-subs
+{
+  /* Hide it until we show it manually. Calendar will be displayed by default */
   display: none;
 }
