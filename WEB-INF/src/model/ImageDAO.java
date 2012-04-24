@@ -9,6 +9,7 @@ package model;
 
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
+import org.genericdao.RollbackException;
 import org.genericdao.GenericDAO;
 
 import databean.Image;
