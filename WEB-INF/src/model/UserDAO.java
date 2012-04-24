@@ -19,9 +19,8 @@ import databean.User;
 public class UserDAO extends GenericDAO<User>
 {
     // Errors
-    final static String ERROR_USERNAME_EXISTS = "Username already exists";
-    final static String ERROR_COMMIT_FAILED = "Transaction.commit() failed " +
-                                              "silently";
+    private final static String ERROR_USERNAME_EXISTS =
+        "Username already exists";
 
     public UserDAO(String tableName, ConnectionPool connectionPool)
                    throws DAOException
@@ -30,43 +29,28 @@ public class UserDAO extends GenericDAO<User>
     }
 
     // Overrides GenericDAO's create method
+    @Override
     public void create(User user) throws RollbackException
     {
         // We need to touch the database for multiple calls
         // Make sure we're in a Transaction
-        if (!Transaction.isActive())
-        {
-            try
-            {
+        if (!Transaction.isActive()) {
+            try {
                 Transaction.begin();
                 create(user);
                 Transaction.commit();
 
                 return;
-            }
-            catch (RollbackException e)
-            {
-                throw new RollbackException(e);
-            }
-            finally
-            {
-                if (Transaction.isActive())
-                {
+            } finally {
+                if (Transaction.isActive()) {
                     Transaction.rollback();
-                    throw new RollbackException(ERROR_COMMIT_FAILED);
                 }
             }
         }
 
-        User[] matchedUsers = match(MatchArg.equals("username",
-                                    user.getUsername()));
-
-        if (matchedUsers.length != 0)
-        {
+        if (this.readByUsername(user.getUsername()) != null) {
             throw new RollbackException(ERROR_USERNAME_EXISTS);
-        }
-        else
-        {
+        } else {
             super.createAutoIncrement(user);
         }
     }

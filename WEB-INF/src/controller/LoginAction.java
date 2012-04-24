@@ -7,7 +7,6 @@
 
 package controller;
 
-import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +37,7 @@ public class LoginAction extends Action {
     public String perform(HttpServletRequest request) {
         HttpSession session = request.getSession();
 
-        /* If the user is already logged in, redirect to home.do */
+        /* If the user is already logged in, redirect to profile.do */
         if (session.getAttribute("user") != null) {
             return "profile.do";
         }

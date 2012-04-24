@@ -25,30 +25,33 @@
         <h2>Register</h2>
         <form id="register-form" method="POST" action="register.do">
           <label>Username</label>
-          <input type="text" name="username"
+          <input type="text" name="username" tabindex=2
                  value="${registerForm.username}" />
           <br />
 
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" tabindex=2 />
           <br />
 
           <label>Reenter your password</label>
-          <input type="password" name="passwordAgain" />
+          <input type="password" name="passwordAgain" tabindex=2 />
           <br />
           
           <label>Email</label>
-          <input type="text" name="email" value="${registerForm.email}" />
+          <input type="text" name="email" tabindex=2
+                 value="${registerForm.email}" />
           <br />
 
           <label>Time zone</label>
-          <input type="text" name="timeZone"
+          <input type="text" name="timeZone" tabindex=2
                  value="${registerForm.timeZone}" />
 
           <label>Zipcode</label>
-          <input type="text" name="zipcode" value="${registerForm.zipcode}" />
+          <input type="text" name="zipcode" tabindex=2
+                 value="${registerForm.zipcode}" />
 
-          <input class="submit-button" type="submit" value="Register" />
+          <input class="submit-button" type="submit" tabindex=2
+                 value="Register" />
         </form>
       </div>
 
@@ -56,14 +59,16 @@
         <h2>Login</h2>
         <form id="login-form">
           <label>Username</label>
-          <input type="text" name="username" value="${loginForm.username}" />
+          <input type="text" name="username" tabindex=1
+                 value="${loginForm.username}" />
           <br />
 
           <label>Password</label>
-          <input type="password" name="password" />
+          <input type="password" name="password" tabindex=1 />
           <br />
 
-          <input class="submit-button" type="submit" value="Login" />
+          <input class="submit-button" type="submit" tabindex=1
+                 value="Login" />
         </form>
       </div>
     </div>

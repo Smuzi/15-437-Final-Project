@@ -31,12 +31,10 @@
   <body id="profile">
     <div class="container">
       <div id="header">
-        <span>
-          some username
-        </span>
+        <span>${user.username}</span>
 
         <a href="logout.do">Logout</a>
-        <a href="account.do">Account Settings</a>
+        <a href="settings.do">Account Settings</a>
       </div>
 
       <div id="profile-tabs">
