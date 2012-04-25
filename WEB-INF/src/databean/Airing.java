@@ -20,7 +20,7 @@ public class Airing
     private int providerId;
     private Date startTime;
     private Date stopTime;
-    private int episodeNumber;
+    private String episodeCode;
     private int channelNumber;
     private String channelName;
 
@@ -30,7 +30,7 @@ public class Airing
     public int getProviderId()     { return providerId; }
     public Date getStartTime()     { return startTime; }
     public Date getStopTime()      { return stopTime; }
-    public int getEpisodeNumber()  { return episodeNumber; }
+    public String getEpisodeCode()  { return episodeCode; }
     public int getChannelNumber()  { return channelNumber; }
     public String getChannelName() { return channelName; }
 
@@ -40,8 +40,8 @@ public class Airing
     public void setProviderId(int providerId) { this.providerId = providerId; }
     public void setStartTime(Date startTime)  { this.startTime  = startTime; }
     public void setStopTime(Date stopTime)    { this.stopTime   = stopTime; }
-    public void setEpisodeNumber(int episodeNumber)
-                                        { this.episodeNumber = episodeNumber; }
+    public void setEpisodeCode(String episodeCode)
+                                        { this.episodeCode   = episodeCode; }
     public void setChannelNumber(int channelNumber)
                                         { this.channelNumber = channelNumber; }
     public void setChannelName(String channelName)
