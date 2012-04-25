@@ -17,7 +17,7 @@ public class Model
 {
     private AiringDAO airingDAO;
     private ImageDAO imageDAO;
-    private NetworkDAO networkDAO;
+    private ProviderDAO providerDAO;
     private ReviewDAO reviewDAO;
     private ShowDAO showDAO;
     private UserDAO userDAO;
@@ -33,7 +33,7 @@ public class Model
 
             airingDAO = new AiringDAO("airing", pool);
             imageDAO = new ImageDAO("image", pool);
-            networkDAO = new NetworkDAO("network", pool);
+            providerDAO = new ProviderDAO("provider", pool);
             reviewDAO = new ReviewDAO("review", pool);
             showDAO = new ShowDAO("tvshow", pool);
             userDAO = new UserDAO("user", pool);
@@ -45,10 +45,10 @@ public class Model
     }
 
     /* Getters */
-    public AiringDAO getAiringDAO()   { return airingDAO; }
-    public ImageDAO getImageDAO()     { return imageDAO; }
-    public NetworkDAO getNetworkDAO() { return networkDAO; }
-    public ReviewDAO getReviewDAO()   { return reviewDAO; }
-    public ShowDAO getShowDAO()       { return showDAO; }
-    public UserDAO getUserDAO()       { return userDAO; }
+    public AiringDAO getAiringDAO()     { return airingDAO; }
+    public ImageDAO getImageDAO()       { return imageDAO; }
+    public ProviderDAO getProviderDAO() { return providerDAO; }
+    public ReviewDAO getReviewDAO()     { return reviewDAO; }
+    public ShowDAO getShowDAO()         { return showDAO; }
+    public UserDAO getUserDAO()         { return userDAO; }
 }
