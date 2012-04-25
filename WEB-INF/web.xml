@@ -32,6 +32,10 @@
     <url-pattern>   /home </url-pattern>
   </servlet-mapping>
 
+  <listener>
+    <listener-class> daemon.AiringSyncThread </listener-class>
+  </listener>
+
   <welcome-file-list>
     <welcome-file>  home </welcome-file>
   </welcome-file-list>
