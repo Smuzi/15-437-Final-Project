@@ -49,8 +49,9 @@ public class Controller extends HttpServlet
         Action.add(new ProfileAction(model));
         Action.add(new SearchAction(model));
         Action.add(new SettingsAction(model));
+        Action.add(new ImageAction(model));
         // TODO: remove
-        Action.add(new ParseTestAction(model));
+        /*Action.add(new ParseTestAction(model)); */
     }
 
     // Handles POST requests
@@ -122,6 +123,21 @@ public class Controller extends HttpServlet
             RequestDispatcher d =
                 request.getRequestDispatcher("WEB-INF/" + nextPage);
             d.forward(request, response);
+            return;
+        }
+
+        if (nextPage.equals("image"))
+        {
+            RequestDispatcher d =
+                request.getRequestDispatcher("WEB-INF/" + nextPage);
+            d.forward(request, response);
+            return;
+        }
+
+        // Default image
+        if (nextPage.equals("default_image.png"))
+        {
+            response.sendRedirect(nextPage);
             return;
         }
 

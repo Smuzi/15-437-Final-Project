@@ -57,7 +57,7 @@ public class RegisterAction extends Action {
 
             /* Make a new user and initialize the fields. */
             User user = new User();
-            user.initialize();
+            user.init();
             user.setUsername(form.getUsername());
             user.setPassword(form.getPassword());
             user.setEmail(form.getEmail());

@@ -44,4 +44,8 @@ public class Show
     public void setShowName(String showName)  { this.showName = showName; }   
     public void setDescription(String description) 
                                             { this.description = description; }
+
+    public void init() {
+        setImageId(0);
+    }
 }

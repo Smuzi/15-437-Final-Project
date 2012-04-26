@@ -60,7 +60,7 @@ public class User
     public void setZipcode(String zipcode)   { this.zipcode = zipcode; }
 
 	/* Functions dealing with this databean */
-	public void initialize() {
+	public void init() {
 		setShowIds(new int[0]);
 		setPhoneNumber("");
 	}

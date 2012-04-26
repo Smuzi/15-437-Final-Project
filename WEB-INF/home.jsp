@@ -25,7 +25,7 @@
             <li>
               <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
-                     src="./amelie_home.jpg">
+                     src="./melie_home.jpg">
                 </img>
               </a>
               <a href="foo">foo</a>
@@ -34,7 +34,7 @@
             <li>
               <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
-                     src="./amelie_home.jpg">
+                     src="image.do?id=0">
                 </img>
               </a>
               <a href="bar">bar</a>
@@ -43,7 +43,7 @@
             <li>
               <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
-                     src="./amelie_home.jpg">
+                     src="./melie_home.jpg">
                 </img>
               </a>
               <a href="qux">qux</a>
@@ -52,7 +52,7 @@
             <li>
               <a class="show-list-image-container" href="foo">
                 <img class="show-list-image"
-                     src="./amelie_home.jpg">
+                     src="./melie_home.jpg">
                 </img>
               </a>
               <a href="frob">frob</a>

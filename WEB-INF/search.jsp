@@ -32,7 +32,7 @@
               <div class="search-result-body">
                 <div class="result-img-container">
                   <img class="search-result-img"
-                      src="./amelie_home.jpg">
+                      src="image.do?id=${show.imageId}">
                   </img>
                 </div>
                 <div class="search-result-info">
