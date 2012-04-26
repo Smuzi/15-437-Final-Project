@@ -17,6 +17,8 @@ import org.w3c.dom.Element;
 
 import java.io.File;
 
+import org.apache.commons.io.FileUtils
+
 import java.util.HashMap;
 import java.util.Date;
 
@@ -33,7 +35,7 @@ import databean.Show;
 
 public class ParseXMLTV
 {
-    public static void parse(String filePath, Model model)
+    public static void parse(File tempDir, Model model)
     {
         ShowDAO showDAO = model.getShowDAO();
         AiringDAO airingDAO = model.getAiringDAO();
@@ -49,9 +51,8 @@ public class ParseXMLTV
         HashMap<String, Integer> channelIdToNum = 
             new HashMap<String, Integer>();
 
-        //File xmlFile = new File(filePath);
-        File xmlFile = new File("/home/robert/shared/4Year/15437/" +
-                "project/repo/xmltv/xmltv.xml");
+        // This is the File we're parsing
+        File xmlFile = new File(tempDir, "xmltv.xml");
 
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
@@ -69,6 +70,7 @@ public class ParseXMLTV
         {
             // TODO: Better error handling...
             e.printStackTrace();
+            // Exit because we can't parse the xml without a document builder
             return;
         }
 
@@ -128,6 +130,8 @@ public class ParseXMLTV
                 {
                     // TODO: Better error handling...
                     e.printStackTrace();
+                    // If we can't parse a date then we don't need this airing
+                    continue;
                 }
 
                 // Set channel number and name
