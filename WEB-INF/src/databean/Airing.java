@@ -30,7 +30,7 @@ public class Airing
     public int getProviderId()     { return providerId; }
     public Date getStartTime()     { return startTime; }
     public Date getStopTime()      { return stopTime; }
-    public String getEpisodeCode()  { return episodeCode; }
+    public String getEpisodeCode() { return episodeCode; }
     public int getChannelNumber()  { return channelNumber; }
     public String getChannelName() { return channelName; }
 

@@ -11,15 +11,19 @@
   <head>
     <title>Profile</title>
     <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <%-- TODO: stylesheet for the calendar. Not sure if I can just stick a 
+         <head> tag in calendar.jsp --%>
+    <link href="cal.css" rel="stylesheet" type="text/css" media="screen" />
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
-      /* It's initially showing the calendar */
-      var showing = "#calendar";
+      /* Displays a div for the times for a show */
+      // This is just a placeholder since we don't show anything at first
+      var showing = "foo";
 
-      function showDiv(elemName)
+      function showShowDiv(showName)
       {
-        var id = "#" + elemName;
+        var id = "#" + showName;
         if (id != showing)
         {
           $(showing).fadeOut(100);
@@ -35,39 +39,15 @@
       <jsp:include page="header.jsp" />
 
       <div id="main-content">
-        <%-- TODO We're already using the id "header" in header.jsp --%>
-        <div id="header">
+        <div>
           <span>
             <span>${user.username}</span>
           </span>
         </div>
 
-        <div id="profile-tabs">
-          <ul>
-            <li>
-              <a href="#" onclick="showDiv('calendar')">Calendar</a>
-            </li>
-            <li>
-              <a href="#" onclick="showDiv('show-subs')">My Shows</a>
-            </li>
-          </ul>
-        </div>
         <div id="profile-main-container">
           <div id="calendar">
-          </div>
-
-          <div id="show-subs">
-            <ul>
-              <li>
-              Show 1
-              </li>
-              <li>
-              Show 2
-              </li>
-              <li>
-              Show 3
-              </li>
-            </ul>
+            <jsp:include page="calendar.jsp" />
           </div>
         </div>
       </div>

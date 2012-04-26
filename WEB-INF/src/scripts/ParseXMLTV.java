@@ -49,6 +49,7 @@ public class ParseXMLTV
         HashMap<String, Integer> channelIdToNum = 
             new HashMap<String, Integer>();
 
+        // This is the File we're parsing
         File xmlFile = new File(tempDir, "xmltv.xml");
 
         DocumentBuilderFactory dbFactory;
@@ -67,6 +68,7 @@ public class ParseXMLTV
         {
             // TODO: Better error handling...
             e.printStackTrace();
+            // Exit because we can't parse the xml without a document builder
             return;
         }
 
@@ -126,6 +128,8 @@ public class ParseXMLTV
                 {
                     // TODO: Better error handling...
                     e.printStackTrace();
+                    // If we can't parse a date then we don't need this airing
+                    continue;
                 }
 
                 // Set channel number and name

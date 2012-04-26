@@ -11,6 +11,7 @@ import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
 import org.genericdao.RollbackException;
+import org.genericdao.MatchArg;
 
 import databean.Airing;
 
@@ -23,7 +24,16 @@ public class AiringDAO extends GenericDAO<Airing>
     }
 
     @Override
-    public void create(Airing airing) throws RollbackException {
+    public void create(Airing airing) throws RollbackException
+    {
         super.createAutoIncrement(airing);
+    }
+
+    public Airing[] readAiringsByShowId(int showId) throws RollbackException
+    {
+        Airing[] matchedAirings = super.match(
+                                    MatchArg.equals("showId", showId));
+
+        return matchedAirings;
     }
 }

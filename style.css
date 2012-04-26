@@ -260,24 +260,3 @@ li
   display: none;
 }
 
-/* profile.jsp */
-
-#profile #profile-tabs li
-{
-  display: inline-block;
-}
-
-#profile #calendar
-{
-  /* TODO: placeholder dimensions */
-  margin-left: auto;
-  margin-right: auto;
-  height: 500px;
-  width: 800px;
-}
-
-#profile-main-container #show-subs
-{
-  /* Hide it until we show it manually. Calendar will be displayed by default */
-  display: none;
-}
