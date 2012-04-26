@@ -24,6 +24,6 @@ public class ProviderDAO extends GenericDAO<Provider>
 
     @Override
     public void create(Provider provider) throws RollbackException {
-        super.createAutoIncrement(image);
+        super.createAutoIncrement(provider);
     }
 }

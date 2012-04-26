@@ -24,6 +24,6 @@ public class AiringDAO extends GenericDAO<Airing>
 
     @Override
     public void create(Airing airing) throws RollbackException {
-        super.createAutoIncrement(image);
+        super.createAutoIncrement(airing);
     }
 }

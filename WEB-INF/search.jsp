@@ -26,45 +26,23 @@
         <jsp:include page="errorlist.jsp" />
 
         <ol>
-
-          <li class="search-result">
-            <div>Show Name#1</div>  
-            <div class="search-result-body">
-              <div class="result-img-container">
-                <img class="search-result-img"
-                     src="./amelie_home.jpg">
-                </img>
-              </div>
-              <div class="search-result-info">
-                <div class="search-result-description">
-                  foo
-                </div> 
-                <div class="search-result-date">
-                  4/23/12
-                </div> 
-              </div>
-            <div>
-          </li>
-
-          <li class="search-result">
-            <div>Show Name#2</div>  
-            <div class="search-result-body">
-              <div class="result-img-container">
-                <img class="search-result-img"
-                     src="./amelie_home.jpg">
-                </img>
-              </div>
-              <div class="search-result-info">
-                <div class="search-result-description">
-                  bar
-                </div> 
-                <div class="search-result-date">
-                  4/23/12
-                </div> 
-              </div>
-            <div>
-          </li>
-
+          <c:forEach var="show" items="${shows}">
+            <li class="search-result">
+              <div>${show.showName}</div>  
+              <div class="search-result-body">
+                <div class="result-img-container">
+                  <img class="search-result-img"
+                      src="./amelie_home.jpg">
+                  </img>
+                </div>
+                <div class="search-result-info">
+                  <div class="search-result-description">
+                    ${show.description}
+                  </div> 
+                </div>
+              <div>
+            </li>
+          </c:forEach>
         </ol> 
       </div>
     </div>
