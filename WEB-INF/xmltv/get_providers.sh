@@ -5,14 +5,13 @@
 #       '/^$/ && found == 1 {blankfound = 1}'
 #       'END                {if (blankfound == 1) exit 1; else exit 0}'
 
-./mc2xml -c us -g 15213 < /dev/null | \
+./mc2xml -c us -g $1 < /dev/null | \
 	stdbuf -o0 sed -e 's/.\o10//g' | \
-	stdbuf -o0 sed -e '/^\[mc2xml\]/d' > foo &
+	stdbuf -o0 sed -e '/^\[mc2xml\]/d' > mc2xml_out.txt &
 
 while true; do
-	if [ "`cat foo | awk '/^[ ]*[0-9]+/{a=1}/^$/&&a==1{b=1; print NR}END{}END{if (b == 1) print "matched"}'`" != "" ]
+	if [ "`cat mc2xml_out.txt | awk '/^[ ]*[0-9]+/{a=1}/^$/&&a==1{b=1; print NR}END{if (b == 1) print "matched"}'`" != "" ]
 	then
-		cat foo
 		killall mc2xml
 		break
 	fi
