@@ -21,20 +21,37 @@ import java.util.GregorianCalendar;
 
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContext;
+
+import model.Model;
+import scripts.ParseXMLTV;
 
 public class AiringSyncThread implements ServletContextListener {
     private Timer timer = null;
     private SyncThread thread;
     private File tempDir;
     private String contextPath;
+    private Model model;
+    private ServletContext context;
 
     public void contextInitialized(ServletContextEvent sce) {
+        context = sce.getServletContext();
+        tempDir = (File)context.
+                    getAttribute("javax.servlet.context.tempdir");
+        contextPath = context.getRealPath("/");
+
+        try {
+            doCommand(new String[] {
+                      "/bin/cp",
+                      contextPath + "WEB-INF/xmltv/xmltv.dtd",
+                      "./"},
+                      tempDir);
+        } catch (Exception e) {
+        }
+
         if (timer == null) {
             timer = new Timer();
             thread = new SyncThread();
-            tempDir = (File)sce.getServletContext().
-                      getAttribute("javax.servlet.context.tempdir");
-            contextPath = sce.getServletContext().getRealPath("/");
 
             /* Schedule the airing synchronizer to run at midnight each
                night. Note that this is not particularly robust to DST or
@@ -50,10 +67,12 @@ public class AiringSyncThread implements ServletContextListener {
                                       midnight.getTime(),
                                       1000*60*60*24);
                                       */
+            /*
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
             timer.schedule(thread, now.getTime());
+            */
         }
     }
 
@@ -68,31 +87,74 @@ public class AiringSyncThread implements ServletContextListener {
     }
 
     public synchronized void syncAirings(String zipcode, String providerName) {
+        Model model;
+
+        do {
+            model = (Model)context.getAttribute("model");
+        } while (model == null);
+
         try {
             /* Get the provider list for this zipcode into a file called
                mc2xml_out.txt */
-            doCommand(contextPath + "WEB-INF/xmltv/get_providers.sh " +
-                      zipcode,
+            doCommand(new String[] {
+                      contextPath + "WEB-INF/xmltv/get_providers.sh",
+                      contextPath + "WEB-INF/xmltv/mc2xml",
+                      zipcode},
                       tempDir);
 
             /* Run this script which parses mc2xml_out.txt for a particular
                provider name, and writes the number of that selection to a file
                called "input" */
-            doCommand(contextPath +
-                      "WEB-INF/xmltv/get_selection.sh '" + providerName + "'",
+            doCommand(new String[] {
+                      contextPath + "WEB-INF/xmltv/get_selection.sh",
+                      providerName},
                       tempDir);
 
             /* Run this script which runs mc2xml with the given zipcode, taking
                the "input" file as input. This generates the xmltv.xml file. */
-            doCommand(contextPath + "WEB-INF/xmltv/get_airings.sh " + zipcode,
+            doCommand(new String[] {
+                      contextPath + "WEB-INF/xmltv/get_airings.sh",
+                      contextPath + "WEB-INF/xmltv/mc2xml",
+                      zipcode},
+                      tempDir);
+        } catch (Exception e) {
+        }
+
+        try {
+            doCommand(new String[] {
+                      "/bin/touch",
+                      "blarg"},
+                      tempDir);
+        } catch (Exception e) {
+        }
+
+        /* Parse the xml file into the database. */
+        ParseXMLTV.parse(tempDir, model);
+
+        try {
+            doCommand(new String[] {
+                      "/bin/touch",
+                      "blarg2"},
+                      tempDir);
+        } catch (Exception e) {
+        }
+
+        try {
+            /* Clean up */
+            doCommand(new String[] {
+                      "rm",
+                      "mc2xml_out.txt",
+                      "input",
+                      "mc2xml.dat",
+                      "xmltv.xml"},
                       tempDir);
         } catch (Exception e) {
         }
     }
 
-    private void doCommand(String command, File workingDir) throws Exception {
+    private void doCommand(String[] args, File workingDir) throws Exception {
         Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(command, null, workingDir);
+        Process process = runtime.exec(args, null, workingDir);
 
         gobbleStream(process.getInputStream());
         gobbleStream(process.getErrorStream());

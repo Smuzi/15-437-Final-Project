@@ -41,6 +41,7 @@ public class Controller extends HttpServlet
         loginRequired = new HashSet<String>(Arrays.asList(array));
 
         Model model = new Model(getServletConfig());
+        getServletContext().setAttribute("model", model);
 
         Action.add(new LoginAction(model));
         Action.add(new LogoutAction(model));

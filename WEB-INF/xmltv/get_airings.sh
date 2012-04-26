@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./mc2xml -c us -g $1 < input
+$1 -c us -g $2 < input
