@@ -50,10 +50,12 @@
           <label>Time zone</label>
           <input type="text" name="timeZone" tabindex=2
                  value="${registerForm.timeZone}" />
+          <br />
 
           <label>Zipcode</label>
           <input type="text" name="zipcode" tabindex=2
                  value="${registerForm.zipcode}" />
+          <br />
 
           <input class="submit-button" type="submit" tabindex=2
                  value="Register" />
