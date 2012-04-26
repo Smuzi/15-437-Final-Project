@@ -24,6 +24,11 @@ public class ShowDAO extends GenericDAO<Show>
         super(Show.class, tableName, connectionPool);
     }
 
+    @Override
+    public void create(Show show) throws RollbackException {
+        super.createAutoIncrement(show);
+    }
+
     public Show readByShowName(Object key) throws RollbackException
     {
         String showName = (String) key;

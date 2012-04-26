@@ -10,6 +10,7 @@ package model;
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
+import org.genericdao.RollbackException;
 
 import databean.Airing;
 
@@ -19,5 +20,10 @@ public class AiringDAO extends GenericDAO<Airing>
                      throws DAOException
     {
         super(Airing.class, tableName, connectionPool);
+    }
+
+    @Override
+    public void create(Airing airing) throws RollbackException {
+        super.createAutoIncrement(image);
     }
 }

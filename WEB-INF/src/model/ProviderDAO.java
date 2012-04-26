@@ -10,6 +10,7 @@ package model;
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
+import org.genericdao.RollbackException;
 
 import databean.Provider;
 
@@ -19,5 +20,10 @@ public class ProviderDAO extends GenericDAO<Provider>
                       throws DAOException
     {
         super(Provider.class, tableName, connectionPool);
+    }
+
+    @Override
+    public void create(Provider provider) throws RollbackException {
+        super.createAutoIncrement(image);
     }
 }
