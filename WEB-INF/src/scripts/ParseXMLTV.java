@@ -50,7 +50,8 @@ public class ParseXMLTV
             new HashMap<String, Integer>();
 
         // This is the File we're parsing
-        File xmlFile = new File(tempDir, "xmltv.xml");
+        //File xmlFile = new File(tempDir, "xmltv.xml");
+        File xmlFile = new File("/home/robert/shared/4Year/15437/project/repo/WEB-INF/xmltv/xmltv.xml");
 
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
