@@ -21,8 +21,8 @@ public class Show
     /* Fields */
     private int id;
     private int imageId;
-    private int[] airingIds;
-    private int[] reviewIds;
+    //private int[] airingIds;
+    //private int[] reviewIds;
     @MaxSize(showNameLength)
     private String showName;
     @MaxSize(descriptionLength)
@@ -31,16 +31,16 @@ public class Show
     /* Getters */
     public int getId()          { return id; }
     public int getImageId()     { return imageId; }
-    public int[] getAiringIds() { return airingIds; }
-    public int[] getReviewIds() { return reviewIds; }
+    //public int[] getAiringIds() { return airingIds; }
+    //public int[] getReviewIds() { return reviewIds; }
     public String getShowName() { return showName; }
     public String getDescription() { return description; }
 
     /* Setters */
     public void setId(int id)                 { this.id = id; }   
     public void setImageId(int imageId)       { this.imageId = imageId; }
-    public void setAiringIds(int[] airingIds) { this.airingIds = airingIds; }
-    public void setReviewIds(int[] reviewIds) { this.reviewIds = reviewIds; }
+    //public void setAiringIds(int[] airingIds) { this.airingIds = airingIds; }
+    //public void setReviewIds(int[] reviewIds) { this.reviewIds = reviewIds; }
     public void setShowName(String showName)  { this.showName = showName; }   
     public void setDescription(String description) 
                                             { this.description = description; }

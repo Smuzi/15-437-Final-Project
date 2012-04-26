@@ -11,6 +11,8 @@ package model;
 import org.genericdao.ConnectionPool;
 import org.genericdao.DAOException;
 import org.genericdao.GenericDAO;
+import org.genericdao.MatchArg;
+import org.genericdao.RollbackException;
 
 import databean.Show;
 
@@ -20,5 +22,15 @@ public class ShowDAO extends GenericDAO<Show>
                      throws DAOException
     {
         super(Show.class, tableName, connectionPool);
+    }
+
+    public Show readByShowName(Object key) throws RollbackException
+    {
+        String showName = (String) key;
+
+        Show[] matchedShows = super.match(
+                                MatchArg.equals("showName", showName));
+        
+        return (matchedShows.length == 0) ? null : matchedShows[0];
     }
 }

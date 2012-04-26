@@ -49,6 +49,8 @@ public class Controller extends HttpServlet
         Action.add(new ProfileAction(model));
         Action.add(new SearchAction(model));
         Action.add(new SettingsAction(model));
+        // TODO: remove
+        Action.add(new ParseTestAction(model));
     }
 
     // Handles POST requests
