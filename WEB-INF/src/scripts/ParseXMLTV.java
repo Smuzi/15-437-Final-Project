@@ -33,7 +33,7 @@ import databean.Show;
 
 public class ParseXMLTV
 {
-    public static void parse(String filePath, Model model)
+    public static void parse(File tempDir, Model model)
     {
         ShowDAO showDAO = model.getShowDAO();
         AiringDAO airingDAO = model.getAiringDAO();
@@ -49,9 +49,7 @@ public class ParseXMLTV
         HashMap<String, Integer> channelIdToNum = 
             new HashMap<String, Integer>();
 
-        //File xmlFile = new File(filePath);
-        File xmlFile = new File("/home/robert/shared/4Year/15437/" +
-                "project/repo/xmltv/xmltv.xml");
+        File xmlFile = new File(tempDir, "xmltv.xml");
 
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
