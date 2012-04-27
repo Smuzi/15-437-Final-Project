@@ -30,5 +30,5 @@ public class Image
     public void setId(int id)        { this.id = id; }
     public void setContentType(String contentType) 
                                      { this.contentType = contentType; }
-    public void setData(byte[] bytes) { this.bytes = bytes; }
+    public void setBytes(byte[] bytes) { this.bytes = bytes; }
 }

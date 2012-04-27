@@ -1,3 +1,10 @@
+/**
+ * @file   IdForm.java
+ * @author Jacob Olson <jholson@andrew.cmu.edu>
+ * @date   4/26/2012
+ * @class  15-437
+ */
+
 package formbean;
 
 import java.util.ArrayList;
