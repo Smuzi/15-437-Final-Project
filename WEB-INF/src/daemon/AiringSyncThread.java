@@ -67,12 +67,10 @@ public class AiringSyncThread implements ServletContextListener {
                                       midnight.getTime(),
                                       1000*60*60*24);
                                       */
-            /*
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
             timer.schedule(thread, now.getTime());
-            */
         }
     }
 
@@ -120,24 +118,8 @@ public class AiringSyncThread implements ServletContextListener {
         } catch (Exception e) {
         }
 
-        try {
-            doCommand(new String[] {
-                      "/bin/touch",
-                      "blarg"},
-                      tempDir);
-        } catch (Exception e) {
-        }
-
         /* Parse the xml file into the database. */
         ParseXMLTV.parse(tempDir, model);
-
-        try {
-            doCommand(new String[] {
-                      "/bin/touch",
-                      "blarg2"},
-                      tempDir);
-        } catch (Exception e) {
-        }
 
         try {
             /* Clean up */
