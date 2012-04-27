@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.genericdao.RollbackException;
+
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
@@ -47,7 +48,8 @@ public class SettingsAction extends Action {
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors", errors);
 
-        try {
+        try
+        {
             SettingsForm form = formBeanFactory.create(request);
             request.setAttribute("form", form);
 

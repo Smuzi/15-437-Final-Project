@@ -20,7 +20,6 @@ html
 
 body
 {
-  height: 100%;
   width: 100%;
 }
 
@@ -47,7 +46,7 @@ form input
 form .submit-button
 {
   margin: 10px 0px;
-  width: 100px;
+  width: 130px;
 }
 
 .container
@@ -275,5 +274,12 @@ li
 {
   /* Hide them until we show them manually */
   display: none;
+}
+
+/* settings.jsp */
+#settings #settings-form, #provider-form
+{
+  display: inline-block;
+  vertical-align: top;
 }
 

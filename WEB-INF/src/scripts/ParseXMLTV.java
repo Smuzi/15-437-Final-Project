@@ -33,6 +33,7 @@ import databean.Show;
 
 public class ParseXMLTV
 {
+    // TODO: pass in providerId
     public static void parse(File tempDir, Model model)
     {
         ShowDAO showDAO = model.getShowDAO();
@@ -113,6 +114,8 @@ public class ParseXMLTV
         {
             /* Create the airing data bean */
             Airing newAiring = new Airing();
+            // TODO: replace with passed in providerId
+            newAiring.setProviderId(1);
 
             if (airingNodeList.item(i).getNodeType() == Node.ELEMENT_NODE)
             {
@@ -175,15 +178,17 @@ public class ParseXMLTV
 
                     String showName = titleNode.getTextContent();
 
-                    NodeList descNodeList = currProgElem.getElementsByTagName("desc");
+                    NodeList descNodeList = currProgElem.getElementsByTagName(
+                                                            "desc");
 
                     String showDescription = null;
                     if (descNodeList.getLength() > 0)
                     {
-                        if (descNodeList.item(0).getNodeType() == Node.ELEMENT_NODE)
+                        if (descNodeList.item(0).getNodeType() 
+                                == Node.ELEMENT_NODE)
                         {
                             showDescription = 
-                                (((Element) descNodeList.item(0)).getTextContent());
+                              ((Element) descNodeList.item(0)).getTextContent();
                         }
                     }
 

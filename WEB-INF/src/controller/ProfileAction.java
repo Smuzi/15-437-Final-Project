@@ -65,7 +65,8 @@ public class ProfileAction extends Action
             }
 
             // Grab airings and package them nicely for the jsp
-            generateShowTimes(request, shows);
+            // TODO: don't have providerId yet
+            generateAllAirings(request, shows, 1);
 
             return "profile.jsp";
         } catch (Exception e)
@@ -75,14 +76,16 @@ public class ProfileAction extends Action
         }
     }
 
-    private void generateShowTimes(HttpServletRequest request, List<Show> shows)
+    private void generateAllAirings(HttpServletRequest request, List<Show> shows,
+                                    int providerId)
         throws RollbackException
     {
         List<ShowCalVM> showCalVMs = new ArrayList<ShowCalVM>();
 
         for (Show show : shows)
         {
-            Airing[] allAirings = airingDAO.readAiringsByShowId(show.getId());
+            Airing[] allAirings = airingDAO.readAiringsByShowIdAndProviderId(
+                    show.getId(), providerId);
 
             ShowCalVM showCalVM = new ShowCalVM(show,
                                 generateOneDay(allAirings, Calendar.MONDAY),

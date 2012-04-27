@@ -72,6 +72,7 @@ public class RegisterAction extends Action {
 
             return "profile.do";
         } catch (Exception e) {
+            request.setAttribute("errors", errors);
             errors.add(e.getClass().getName() + ": " + e.getMessage());
             return "error.jsp";
         }

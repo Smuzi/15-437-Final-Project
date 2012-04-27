@@ -13,14 +13,18 @@ import java.util.ArrayList;
 import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
+import org.genericdao.RollbackException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import databean.User;
 import databean.Show;
+import databean.Airing;
 import formbean.IdForm;
 import model.Model;
 import model.ShowDAO;
+import model.AiringDAO;
 
 public class ShowAction extends Action
 {
@@ -28,10 +32,12 @@ public class ShowAction extends Action
             FormBeanFactory.getInstance(IdForm.class);
 
     private ShowDAO showDAO;
+    private AiringDAO airingDAO;
 
     public ShowAction(Model model)
     {
         showDAO = model.getShowDAO();
+        airingDAO = model.getAiringDAO();
     }
 
     public String getName() { return "show.do"; }
@@ -68,11 +74,27 @@ public class ShowAction extends Action
                 request.setAttribute("isFavorite", true);
             }
 
+            // Get airings for this show
+            // TODO: replace with actual proivderId
+            generateAirings(request, form.getIdAsInt(), 1);
+
             return "show.jsp";
         } catch (Exception e)
         {
             errors.add(e.getClass().getName() + ": " + e.getMessage());
             return "error.jsp";
         }
+    }
+
+    private void generateAirings(HttpServletRequest request, int showId, 
+                                 int providerId)
+        throws RollbackException
+    {
+        List<Show> shows = new ArrayList<Show>();
+
+        Airing[] airings = airingDAO.readAiringsByShowIdAndProviderId(
+                            showId, providerId);
+        
+        request.setAttribute("airings", airings);
     }
 }

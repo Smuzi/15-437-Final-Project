@@ -13,7 +13,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
 
-  <body>
+  <body id="settings">
     <div class="container">
       <jsp:include page="header.jsp" />
 
@@ -37,7 +37,18 @@
         <input type="text" name="zipcode" value="${form.zipcode}" />
         <br />
 
-        <input type="submit" value="Update settings" />
+        <input class="submit-button" type="submit" value="Update Settings" />
+      </form>
+
+      <form id="provider-form" method="POST" action="updateprovider.do">
+        <label>Service Provider</label>
+        <select name="provider">
+          <option value="foo">Foo</option>
+          <option value="bar">Bar</option>
+        </select>
+        <br />
+
+        <input class="submit-button" type="submit" value="Update Provider" />
       </form>
     </div>
   </body>

@@ -29,10 +29,12 @@ public class AiringDAO extends GenericDAO<Airing>
         super.createAutoIncrement(airing);
     }
 
-    public Airing[] readAiringsByShowId(int showId) throws RollbackException
+    public Airing[] readAiringsByShowIdAndProviderId(int showId, int providerId)
+        throws RollbackException
     {
-        Airing[] matchedAirings = super.match(
-                                    MatchArg.equals("showId", showId));
+        Airing[] matchedAirings = super.match(MatchArg.and(
+                                    MatchArg.equals("showId", showId),
+                                    MatchArg.equals("providerId", providerId)));
 
         return matchedAirings;
     }

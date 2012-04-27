@@ -24,6 +24,7 @@ public class User
     /* Fields */
     private int id;
     private int[] showIds;
+    private int providerId;
 	@MaxSize(usernameLength)
     private String username;
 	@MaxSize(passwordLength)
@@ -41,6 +42,7 @@ public class User
     /* Getters */
     public int getId()             { return id; }
     public int[] getShowIds()      { return showIds; }
+    public int getProviderId()     { return providerId; }
     public String getUsername()    { return username; }
     public String getPassword()    { return password; }
     public String getEmail()       { return email; }
@@ -53,6 +55,8 @@ public class User
 
     public void setId(int id)                { this.id = id; }   
     public void setShowIds(int[] showIds)    { this.showIds = showIds; }   
+    public void setProviderId(int providerId)
+                                             { this.providerId = providerId; }
     public void setUsername(String username) { this.username = username; }   
     public void setPassword(String password) { this.password = password; }   
     public void setEmail(String email)       { this.email = email; }   
