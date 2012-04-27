@@ -70,7 +70,7 @@ public class AiringSyncThread implements ServletContextListener {
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
-            timer.schedule(thread, now.getTime());
+            //timer.schedule(thread, now.getTime());
         }
     }
 
