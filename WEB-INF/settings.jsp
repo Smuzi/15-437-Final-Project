@@ -42,9 +42,17 @@
 
       <form id="provider-form" method="POST" action="updateprovider.do">
         <label>Service Provider</label>
-        <select name="provider">
-          <option value="foo">Foo</option>
-          <option value="bar">Bar</option>
+        <select name="providerIdAsString">
+          <option value="${selectedProvider.id}" select="selected">
+            ${selectedProvider.name}
+          </option>
+          <c:forEach var="providerChoice" items="${providerChoices}">
+            <c:if test="${providerChoice != selectedProvider}">
+              <option value="${providerChoice.id}">
+                ${providerChoice.name}
+              </option>
+            </c:if>
+          </c:forEach>
         </select>
         <br />
 

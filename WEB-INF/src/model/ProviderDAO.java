@@ -47,4 +47,13 @@ public class ProviderDAO extends GenericDAO<Provider>
             return (matchedProviders.length > 0) ? matchedProviders[0] : null;
         }
     }
+
+    public Provider[] readByZipcode(String zipcode)
+        throws RollbackException
+    {
+        Provider[] matchedProviders = super.match(MatchArg.equals(
+                                                "zipcode", zipcode));
+
+        return matchedProviders;
+    }
 }

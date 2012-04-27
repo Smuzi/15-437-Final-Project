@@ -20,18 +20,22 @@ import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import databean.User;
+import databean.Provider;
 import formbean.SettingsForm;
 import model.Model;
 import model.UserDAO;
+import model.ProviderDAO;
 
 public class SettingsAction extends Action {
     private FormBeanFactory<SettingsForm> formBeanFactory =
             FormBeanFactory.getInstance(SettingsForm.class);
 
     private UserDAO userDAO;
+    private ProviderDAO providerDAO;
 
     public SettingsAction(Model model) {
         userDAO = model.getUserDAO();
+        providerDAO = model.getProviderDAO();
     }
 
     public String getName() { return "settings.do"; }
@@ -54,10 +58,17 @@ public class SettingsAction extends Action {
             request.setAttribute("form", form);
 
             if (!form.isPresent()) {
+                // Set up the user settings form
                 form.setEmail(user.getEmail());
                 form.setTimeZone(user.getTimeZone());
                 form.setZipcode(user.getZipcode());
                 form.setPhoneNumber(user.getPhoneNumber());
+
+                // Set up the provider form
+                request.setAttribute("providerChoices", 
+                        providerDAO.readByZipcode(user.getZipcode()));
+                request.setAttribute("selectedProvider",
+                        providerDAO.read(user.getProviderId()));
 
                 return "settings.jsp";
             }

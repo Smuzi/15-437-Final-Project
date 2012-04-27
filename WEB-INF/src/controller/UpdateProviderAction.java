@@ -56,16 +56,13 @@ public class UpdateProviderAction extends Action
         try
         {
             UpdateProviderForm form = formBeanFactory.create(request);
-            if (!form.isPresent())
-            {
-                return "settings.do";
-            }
 
-            Provider provider = providerDAO.readByNameAndZipcode(
-                                  form.getProvider(), currUser.getZipcode());
+            Provider provider = providerDAO.read(
+                    Integer.parseInt(form.getProviderIdAsString()));
+
             if (provider == null)
             {
-                errors.add("Provider: " + form.getProvider() + 
+                errors.add("ProviderId: " + form.getProviderIdAsString() + 
                         ", Zipcode: " + currUser.getZipcode() + 
                         ". Invalid provider selected (not in database)");
                 return "error.jsp";

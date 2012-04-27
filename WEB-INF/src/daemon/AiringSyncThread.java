@@ -66,7 +66,7 @@ public class AiringSyncThread implements ServletContextListener {
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
-            timer.schedule(thread, now.getTime());
+            //timer.schedule(thread, now.getTime());
         }
     }
 
@@ -92,6 +92,11 @@ public class AiringSyncThread implements ServletContextListener {
             } while (model == null);
 
             DatabaseSync.generateProviders(model, tempDir, contextPath, "15213");
+            try {
+            DatabaseSync.syncAirings(model, tempDir, contextPath, "15213", 
+                                    model.getProviderDAO().read(1).getName(),
+                                    0, 5);
+            } catch (Exception e) {}
         }
     }
 }
