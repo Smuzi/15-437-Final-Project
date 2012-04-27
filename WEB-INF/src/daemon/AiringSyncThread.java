@@ -118,24 +118,8 @@ public class AiringSyncThread implements ServletContextListener {
         } catch (Exception e) {
         }
 
-        try {
-            doCommand(new String[] {
-                      "/bin/touch",
-                      "blarg"},
-                      tempDir);
-        } catch (Exception e) {
-        }
-
         /* Parse the xml file into the database. */
         ParseXMLTV.parse(tempDir, model);
-
-        try {
-            doCommand(new String[] {
-                      "/bin/touch",
-                      "blarg2"},
-                      tempDir);
-        } catch (Exception e) {
-        }
 
         try {
             /* Clean up */
