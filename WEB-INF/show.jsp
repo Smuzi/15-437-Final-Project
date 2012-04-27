@@ -27,6 +27,11 @@
           $(id).delay(100).fadeIn(200);
           showing = id;
         }
+        else
+        {
+          $(showing).fadeOut(100);
+          showing = "foo"
+        }
       }
     </script> 
   </head>
@@ -79,7 +84,15 @@
         </div>
         <div id="show-info-container">
           <div id="show-times">
-            <h3>some times</h3>
+            <ul>
+              <c:forEach var="airing" items="${airings}">
+                <li>
+                  <span>${airing.startTime}</span>
+                  <span>${airing.stopTime}</span>
+                  <div>${airing.channelNumber} ${airing.channelName}</div>
+                </li>
+              </c:forEach>
+            </ul>
           </div>
           <div id="show-reviews">
             <h3>i'm a review</h3>

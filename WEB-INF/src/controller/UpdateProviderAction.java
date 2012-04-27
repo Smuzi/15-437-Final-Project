@@ -61,7 +61,7 @@ public class UpdateProviderAction extends Action
                 return "settings.do";
             }
 
-            Provider provider = providerDAO.readByProviderNameAndZipcode(
+            Provider provider = providerDAO.readByNameAndZipcode(
                                   form.getProvider(), currUser.getZipcode());
             if (provider == null)
             {

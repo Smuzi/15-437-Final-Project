@@ -94,7 +94,7 @@ public class DatabaseSync {
                                                 String providerName,
                                                 int hoursFromNow,
                                                 int hoursDuration) {
-        Provider provider;
+        Provider provider = null;
 
         try {
             ProviderDAO providerDAO = model.getProviderDAO();

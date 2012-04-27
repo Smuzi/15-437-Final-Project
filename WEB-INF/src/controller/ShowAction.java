@@ -67,7 +67,8 @@ public class ShowAction extends Action
             // For the "Add Show" anchor
             if (currUser != null)
             {
-                request.setAttribute("isFavorite", currUser.hasShow(show.getId()));
+                request.setAttribute("isFavorite", 
+                        currUser.hasShow(show.getId()));
             }
             else
             {
@@ -75,8 +76,8 @@ public class ShowAction extends Action
             }
 
             // Get airings for this show
-            // TODO: replace with actual proivderId
-            generateAirings(request, form.getIdAsInt(), 1);
+            generateAirings(request, form.getIdAsInt(), 
+                    currUser.getProviderId());
 
             return "show.jsp";
         } catch (Exception e)

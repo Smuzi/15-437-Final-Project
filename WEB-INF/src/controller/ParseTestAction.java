@@ -18,7 +18,7 @@ public class ParseTestAction extends Action
 
     public String perform(HttpServletRequest request)
     {
-        ParseXMLTV.parse(null, model);
+        ParseXMLTV.parse(null, model, 1);
 
         return "home.jsp";
     }

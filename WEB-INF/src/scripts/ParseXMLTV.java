@@ -34,7 +34,7 @@ import databean.Show;
 public class ParseXMLTV
 {
     // TODO: pass in providerId
-    public static void parse(File tempDir, Model model)
+    public static void parse(File tempDir, Model model, int providerId)
     {
         ShowDAO showDAO = model.getShowDAO();
         AiringDAO airingDAO = model.getAiringDAO();
@@ -114,8 +114,7 @@ public class ParseXMLTV
         {
             /* Create the airing data bean */
             Airing newAiring = new Airing();
-            // TODO: replace with passed in providerId
-            newAiring.setProviderId(1);
+            newAiring.setProviderId(providerId);
 
             if (airingNodeList.item(i).getNodeType() == Node.ELEMENT_NODE)
             {
@@ -191,10 +190,6 @@ public class ParseXMLTV
                               ((Element) descNodeList.item(0)).getTextContent();
                         }
                     }
-
-                    // Set providerId to whatever was passed in
-                    // TODO: change to param
-                    newAiring.setProviderId(0);
 
                     // Try and get the showId or generate a new show if
                     // necessary. If any of this fails then we just drop this
