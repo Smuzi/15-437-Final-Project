@@ -67,12 +67,10 @@ public class AiringSyncThread implements ServletContextListener {
                                       midnight.getTime(),
                                       1000*60*60*24);
                                       */
-            /*
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
             timer.schedule(thread, now.getTime());
-            */
         }
     }
 
