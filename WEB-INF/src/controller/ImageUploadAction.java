@@ -60,9 +60,18 @@ public class ImageUploadAction extends Action {
             ImageUploadForm form = formBeanFactory.create(request);
             request.setAttribute("form", form);
 
+            /* Retrieve the relevant show from the database. */
+            Show show = showDAO.read(form.getShowIdAsInt());
+            if (show == null) {
+                errors.add("Show " + form.getShowId() +
+                           " not found in database.");
+                return "error.jsp";
+            }
+            request.setAttribute("show", show);
+
             /* If no file was passed, assume that this is the first time
                the form's being shown. */
-            if (form.getImage() == null) {
+            if (form.getAction().equals("toForm")) {
                 return "imageupload.jsp";
             }
 
@@ -72,18 +81,11 @@ public class ImageUploadAction extends Action {
                 return "imageupload.jsp";
             }
 
-            /* Retrieve the relevant show from the database. */
-            Show show = showDAO.read(form.getShowId());
-            if (show == null) {
-                errors.add("Show " + form.getShowId() +
-                           " not found in database.");
-                return "error.jsp";
-            }
-
             /* Upload the image into the database, overwriting the previous
                one if applicable. */
             Image image = new Image();
             image.setBytes(form.getImage().getBytes());
+            image.setContentType(form.getImage().getContentType());
             if (show.getImageId() != 0) {
                 image.setId(show.getImageId());
                 imageDAO.update(image);

@@ -52,7 +52,7 @@ public class ShowAction extends Action
             errors.addAll(form.getValidationErrors());
             if (errors.size() != 0)
             {
-                return "errors.jsp";
+                return "error.jsp";
             }
 
             Show show = showDAO.read(form.getIdAsInt());

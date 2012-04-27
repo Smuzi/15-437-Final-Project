@@ -56,7 +56,7 @@ public class AddShowAction extends Action
             errors.addAll(form.getValidationErrors());
             if (errors.size() != 0)
             {
-                return "errors.jsp";
+                return "error.jsp";
             }
             
             if (!currUser.addShowId(form.getIdAsInt()))

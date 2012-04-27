@@ -133,7 +133,7 @@ public class Controller extends HttpServlet
         if (nextPage.equals("image"))
         {
             RequestDispatcher d =
-                request.getRequestDispatcher("WEB-INF/" + nextPage);
+                request.getRequestDispatcher(nextPage);
             d.forward(request, response);
             return;
         }

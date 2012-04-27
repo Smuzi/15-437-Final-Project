@@ -41,6 +41,14 @@
           <c:if test="${isFavorite == false}">
             <a id="add-show" href="addshow.do?id=${show.id}">Add Show</a>
           </c:if>
+          <c:if test="${user.admin}">
+            <form method="POST" action="imageupload.do"
+                  enctype="multipart/form-data">
+              <input type="hidden" name="showId" value="${show.id}" />
+              <input type="hidden" name="action" value="toForm" />
+              <a href="#" onClick="parentNode.submit()">Upload image</a>
+            </form>
+          </c:if>
           <div>Fake Rating: 5.0/5.0</div>
         </div>
 

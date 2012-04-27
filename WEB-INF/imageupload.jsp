@@ -6,10 +6,16 @@
   @class  15-437
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>Upload image</title>
-    <meta http-equiv="refresh" content="0; url=show.do?${form.getShowId}" />
+    <c:if test="${form.action == 'upload' && fn:length(errors) == 0}">
+      <meta http-equiv="refresh" content="0; url=show.do?id=${form.showId}" />
+    </c:if>
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
 
   <body>
@@ -20,7 +26,8 @@
 
       <form method="POST" action="imageupload.do"
             enctype="multipart/form-data">
-        <input type="hidden" name="showId" value="${form.getShowId}" />
+        <input type="hidden" name="showId" value="${form.showId}" />
+        <input type="hidden" name="action" value="upload" />
 
         <label>Upload new image:</label>
         <input type="file" name="image" />
@@ -29,7 +36,7 @@
         <input type="submit" value="Upload" />
       </form>
 
-      <a href="show.do?id=${form.getShowId}">Back to show</a>
+      <a href="show.do?id=${form.showId}">Back to show</a>
     </div>
   </body>
 </html>

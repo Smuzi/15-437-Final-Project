@@ -53,6 +53,10 @@ public class ImageAction extends Action {
             }
 
             Image image = imageDAO.read(form.getIdAsInt());
+            if (image == null) {
+                errors.add("No image with id " + form.getIdAsInt());
+                return "error.jsp";
+            }
             request.setAttribute("image", image);
             
             return "image";
