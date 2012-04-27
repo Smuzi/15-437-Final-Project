@@ -11,9 +11,10 @@ import org.mybeans.form.FormBean;
 
 public class UpdateProviderForm extends FormBean
 {
-    private String provider;
+    private String providerIdAsString;
 
-    public String getProvider() { return provider; }
+    public String getProviderIdAsString() { return providerIdAsString; }
 
-    public void setProvider(String s) { provider = s.trim(); }
+    public void setProviderIdAsString(String s) 
+                                    { providerIdAsString = s.trim(); }
 }

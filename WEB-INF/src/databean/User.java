@@ -68,6 +68,7 @@ public class User
 
 	/* Functions dealing with this databean */
 	public void init() {
+        setProviderId(1);
 		setShowIds(new int[0]);
 		setPhoneNumber("");
         setAdmin(false);

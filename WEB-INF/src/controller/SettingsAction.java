@@ -7,6 +7,8 @@
 
 package controller;
 
+import java.io.File;
+
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,18 +22,25 @@ import org.mybeans.form.FormBeanException;
 import org.mybeans.form.FormBeanFactory;
 
 import databean.User;
+import databean.Provider;
 import formbean.SettingsForm;
 import model.Model;
 import model.UserDAO;
+import model.ProviderDAO;
+import util.DatabaseSync;
 
 public class SettingsAction extends Action {
     private FormBeanFactory<SettingsForm> formBeanFactory =
             FormBeanFactory.getInstance(SettingsForm.class);
 
     private UserDAO userDAO;
+    private ProviderDAO providerDAO;
+    private Model model;
 
     public SettingsAction(Model model) {
+        this.model = model;
         userDAO = model.getUserDAO();
+        providerDAO = model.getProviderDAO();
     }
 
     public String getName() { return "settings.do"; }
@@ -54,10 +63,17 @@ public class SettingsAction extends Action {
             request.setAttribute("form", form);
 
             if (!form.isPresent()) {
+                // Set up the user settings form
                 form.setEmail(user.getEmail());
                 form.setTimeZone(user.getTimeZone());
                 form.setZipcode(user.getZipcode());
                 form.setPhoneNumber(user.getPhoneNumber());
+
+                // Set up the provider form
+                request.setAttribute("providerChoices", 
+                        providerDAO.readByZipcode(user.getZipcode()));
+                request.setAttribute("selectedProvider",
+                        providerDAO.read(user.getProviderId()));
 
                 return "settings.jsp";
             }
@@ -71,6 +87,16 @@ public class SettingsAction extends Action {
             /* Update the information in the database. */
             user.setEmail(form.getEmail());
             user.setTimeZone(form.getTimeZone());
+            if (user.getZipcode() != form.getZipcode()) {
+                File tempDir = (File)request.getServletContext().
+                               getAttribute("javax.servlet.context.tempdir");
+                String contextPath = request.getServletContext().
+                                     getRealPath("/");
+                DatabaseSync.generateProviders(model, tempDir, contextPath,
+                                               user.getZipcode());
+                /* TODO This is weird... */
+                user.setProviderId(1);
+            }
             user.setZipcode(form.getZipcode());
             user.setPhoneNumber(form.getPhoneNumber());
             userDAO.update(user);

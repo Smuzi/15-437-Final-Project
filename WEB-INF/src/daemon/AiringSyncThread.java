@@ -73,7 +73,7 @@ public class AiringSyncThread implements ServletContextListener {
             GregorianCalendar now =
                 new GregorianCalendar();
             now.add(Calendar.SECOND, 1);
-            timer.schedule(thread, now.getTime());
+            //timer.schedule(thread, now.getTime());
         }
     }
 
@@ -97,10 +97,6 @@ public class AiringSyncThread implements ServletContextListener {
             do {
                 model = (Model)context.getAttribute("model");
             } while (model == null);
-
-            /* TODO iterate through every provider in the database. if we're
-             * more than a day past the last sync, sync enough
-               time to cover the difference and take us back up to 7 days. */
 
             /* Get all of the providers in the database. */
             List<Provider> providers;
