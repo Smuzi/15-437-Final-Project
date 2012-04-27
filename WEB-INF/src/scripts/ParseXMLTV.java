@@ -61,7 +61,9 @@ public class ParseXMLTV
         {
             dbFactory = DocumentBuilderFactory.newInstance();
             dBuilder = dbFactory.newDocumentBuilder();
+            System.out.println("foo");
             doc = dBuilder.parse(xmlFile);
+            System.out.println("foo1");
             // Not really sure why this is important, but you can read docs
             // online
             doc.getDocumentElement().normalize();
