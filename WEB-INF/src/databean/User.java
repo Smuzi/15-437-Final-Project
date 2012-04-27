@@ -64,4 +64,76 @@ public class User
 		setShowIds(new int[0]);
 		setPhoneNumber("");
 	}
+
+    public boolean addShowId(int showId)
+    {
+        // Validate showId
+        if (hasShow(showId))
+        {
+            // We didn't add it
+            return false;
+        }
+
+        int[] oldShowIds = this.showIds;
+        int[] newShowIds = new int[oldShowIds.length + 1];
+
+        // Copy the showIds over
+        for (int i = 0; i < oldShowIds.length; i++)
+        {
+            newShowIds[i] = oldShowIds[i];
+        }
+
+        newShowIds[oldShowIds.length] = showId;
+
+        this.setShowIds(newShowIds);
+        
+        return true;
+    }
+
+    public boolean deleteShowId(int showId)
+    {
+        // Validate showId
+        if (!hasShow(showId))
+        {
+            // We can't delete it, it's not there
+            return false;
+        }
+        
+        int[] oldShowIds = this.showIds;
+        int[] newShowIds = new int[oldShowIds.length - 1];
+
+        // Copy ids over other than the deleted one
+        for (int i = 0, newShowInd = 0; i < oldShowIds.length; 
+                i++, newShowInd++)
+        {
+            if (oldShowIds[i] == showId)
+            {
+                newShowInd--;
+                continue;
+            } 
+            else
+            {
+                newShowIds[newShowInd] = oldShowIds[i];
+            }
+        }
+
+        this.setShowIds(newShowIds);
+
+        return true;
+    }
+
+    // Used both for adding/deleting and for deciding whether or not
+    // to display links for adding/deleting
+    public boolean hasShow(int showId)
+    {
+        for (int i = 0; i < this.showIds.length; i++)
+        {
+            if (showIds[i] == showId)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

@@ -51,6 +51,8 @@ public class Controller extends HttpServlet
         Action.add(new SearchAction(model));
         Action.add(new SettingsAction(model));
         Action.add(new ImageAction(model));
+        Action.add(new ShowAction(model));
+        Action.add(new AddShowAction(model));
         // TODO: remove
         Action.add(new ParseTestAction(model));
     }

@@ -226,6 +226,11 @@ li
 
 /* show.jsp */
 
+#show-header h3
+{
+  display: inline-block;
+}
+
 #show #show-img
 {
   display: inline-block;

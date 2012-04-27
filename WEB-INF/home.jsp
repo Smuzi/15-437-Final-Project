@@ -23,7 +23,7 @@
           <ul id="top-show-list">
             <div>Most popular shows:</div>
             <li>
-              <a class="show-list-image-container" href="foo">
+              <a class="show-list-image-container" href="show.do?id=10">
                 <img class="show-list-image"
                      src="./melie_home.jpg">
                 </img>
