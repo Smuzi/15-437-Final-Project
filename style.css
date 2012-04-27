@@ -18,6 +18,12 @@ html
   font-family: courier new;
 }
 
+body
+{
+  height: 100%;
+  width: 100%;
+}
+
 /* error text */
 .error-text {
     color: red;
@@ -147,9 +153,15 @@ li
 
 #home #show-sidebar .show-list-image-container
 {
-  display: inline-block;
+  float: left;
   margin-right: 10px;
+}
+
+#home #show-sidebar .show-list-name
+{
+  display: table-cell;
   vertical-align: middle;
+  text-overflow: ellipsis;
 }
 
 #home #show-sidebar img

@@ -10,7 +10,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <%-- TODO: Switch this to autogenerate an appropriate title --%>
-    <title>Generic Show</title>
+    <title>${show.showName}</title>
     <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -57,7 +57,14 @@
           </img>
         </div>
         <div id="show-description">
-          ${show.description}
+          <c:choose>
+            <c:when test="${not empty show.description}">
+              ${show.description}
+            </c:when>
+            <c:otherwise>
+              No description.
+            </c:otherwise>
+          </c:choose>
         </div>
 
         <div id="show-tabs">

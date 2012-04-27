@@ -30,11 +30,11 @@
             <li class="search-result">
               <div>${show.showName}</div>  
               <div class="search-result-body">
-                <div class="result-img-container">
+                <a class="result-img-container" href="show.do?id=${show.id}">
                   <img class="search-result-img"
-                      src="image.do?id=${show.imageId}">
+                       src="image.do?id=${show.imageId}">
                   </img>
-                </div>
+                </a>
                 <div class="search-result-info">
                   <div class="search-result-description">
                     ${show.description}
