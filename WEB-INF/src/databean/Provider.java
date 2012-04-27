@@ -25,7 +25,7 @@ public class Provider
     public int getId()      { return id; }
     public String getName() { return name; }
     public String getZipcode() { return zipcode; }
-    private Date getLastSync() { return lastSync; }
+    public Date getLastSync() { return lastSync; }
 
     /* Setters */
     public void setId(int id) { this.id = id; }   

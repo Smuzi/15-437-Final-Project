@@ -16,6 +16,8 @@ import java.lang.Integer;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import org.genericdao.Transaction;
 
@@ -61,7 +63,10 @@ public class DatabaseSync {
                     Provider provider = new Provider();
                     provider.setName(providerName);
                     provider.setZipcode(zipcode);
-                    provider.setLastSync(new Date());
+                    Calendar now = new GregorianCalendar();
+                    now.setTime(new Date());
+                    now.add(Calendar.YEAR, -100);
+                    provider.setLastSync(now.getTime());
 
                     providerList.add(provider);
                 }
@@ -95,9 +100,10 @@ public class DatabaseSync {
                                                 int hoursFromNow,
                                                 int hoursDuration) {
         Provider provider = null;
+        ProviderDAO providerDAO;
 
         try {
-            ProviderDAO providerDAO = model.getProviderDAO();
+            providerDAO = model.getProviderDAO();
             provider =
                 (Provider)providerDAO.readByNameAndZipcode(providerName, zipcode);
 
@@ -126,13 +132,14 @@ public class DatabaseSync {
                       Integer.toString(hoursFromNow),
                       Integer.toString(hoursDuration)},
                       tempDir);
-        } catch (Exception e) {
-        }
 
-        /* Parse the xml file into the database. */
-        ParseXMLTV.parse(tempDir, model, provider.getId());
+            /* Parse the xml file into the database. */
+            ParseXMLTV.parse(tempDir, model, provider.getId());
 
-        try {
+            /* Update the provider with a new "time last parsed" value. */
+            provider.setLastSync(new Date());
+            providerDAO.update(provider);
+
             /* Clean up */
             CommandUtil.doCommand(
                     new String[] {

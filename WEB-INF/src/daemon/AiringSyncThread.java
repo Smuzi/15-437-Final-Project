@@ -9,25 +9,32 @@ package daemon;
 
 import java.io.File;
 
+import java.lang.Math;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Arrays;
 
 import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContext;
 
+import org.joda.time.DateTime;
+import org.joda.time.Hours;
+
 import model.Model;
 import util.CommandUtil;
 import util.DatabaseSync;
+import databean.Provider;
 
 public class AiringSyncThread implements ServletContextListener {
     private Timer timer = null;
     private SyncThread thread;
     private File tempDir;
     private String contextPath;
-    private Model model;
     private ServletContext context;
 
     public void contextInitialized(ServletContextEvent sce) {
@@ -91,7 +98,37 @@ public class AiringSyncThread implements ServletContextListener {
                 model = (Model)context.getAttribute("model");
             } while (model == null);
 
-            DatabaseSync.generateProviders(model, tempDir, contextPath, "15213");
+            /* TODO iterate through every provider in the database. if we're
+             * more than a day past the last sync, sync enough
+               time to cover the difference and take us back up to 7 days. */
+
+            /* Get all of the providers in the database. */
+            List<Provider> providers;
+            try {
+                providers = Arrays.asList(model.getProviderDAO().match());
+            } catch (Exception e) {
+                return;
+            }
+
+
+            for (Provider p : providers) {
+                DateTime lastSync = new DateTime(p.getLastSync());
+                DateTime now = new DateTime();
+
+                int hours = Hours.hoursBetween(lastSync, now).getHours();
+                if (hours >= 24) {
+                    int hoursFromNow = Math.max(7*24 - hours, 0);
+                    int hoursDuration = Math.min(hours, 7*24);
+
+                    DatabaseSync.syncAirings(model,
+                                             tempDir,
+                                             contextPath,
+                                             p.getZipcode(),
+                                             p.getName(),
+                                             hoursFromNow,
+                                             hoursDuration);
+                }
+            }
         }
     }
 }
