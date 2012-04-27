@@ -7,6 +7,8 @@
 
 package controller;
 
+import java.io.File;
+
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ import formbean.SettingsForm;
 import model.Model;
 import model.UserDAO;
 import model.ProviderDAO;
+import util.DatabaseSync;
 
 public class SettingsAction extends Action {
     private FormBeanFactory<SettingsForm> formBeanFactory =
@@ -32,8 +35,10 @@ public class SettingsAction extends Action {
 
     private UserDAO userDAO;
     private ProviderDAO providerDAO;
+    private Model model;
 
     public SettingsAction(Model model) {
+        this.model = model;
         userDAO = model.getUserDAO();
         providerDAO = model.getProviderDAO();
     }
@@ -82,6 +87,16 @@ public class SettingsAction extends Action {
             /* Update the information in the database. */
             user.setEmail(form.getEmail());
             user.setTimeZone(form.getTimeZone());
+            if (user.getZipcode() != form.getZipcode()) {
+                File tempDir = (File)request.getServletContext().
+                               getAttribute("javax.servlet.context.tempdir");
+                String contextPath = request.getServletContext().
+                                     getRealPath("/");
+                DatabaseSync.generateProviders(model, tempDir, contextPath,
+                                               user.getZipcode());
+                /* TODO This is weird... */
+                user.setProviderId(1);
+            }
             user.setZipcode(form.getZipcode());
             user.setPhoneNumber(form.getPhoneNumber());
             userDAO.update(user);

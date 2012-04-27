@@ -7,6 +7,8 @@
 
 package controller;
 
+import java.io.File;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,14 +23,17 @@ import databean.User;
 import formbean.RegisterForm;
 import model.Model;
 import model.UserDAO;
+import util.DatabaseSync;
 
 public class RegisterAction extends Action {
     private FormBeanFactory<RegisterForm> formBeanFactory =
         FormBeanFactory.getInstance(RegisterForm.class);
 
     private UserDAO userDAO;
+    private Model model;
 
     public RegisterAction(Model model) {
+        this.model = model;
         userDAO = model.getUserDAO();
     }
 
@@ -69,6 +74,14 @@ public class RegisterAction extends Action {
 
             /* Attach the user bean to the session. */
             session.setAttribute("user", user);
+
+            File tempDir = (File)request.getServletContext().
+                           getAttribute("javax.servlet.context.tempdir");
+            String contextPath = request.getServletContext().
+                                 getRealPath("/");
+
+            DatabaseSync.generateProviders(model, tempDir, contextPath,
+                                           user.getZipcode());
 
             return "profile.do";
         } catch (Exception e) {
