@@ -48,4 +48,18 @@ public class Show
     public void init() {
         setImageId(0);
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Show) {
+            return (getId() == ((Show)object).getId());
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return getId();
+    }
 }

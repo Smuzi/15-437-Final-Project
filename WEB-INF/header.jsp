@@ -10,14 +10,14 @@
 
 <div id="header">
   <div id="logo-container">
-    <a href="home.do">
+    <a href="home.do" tabindex="0">
       <img src="bluetube.jpg" />
     </a>
   </div>
 
   <div id="search-bar">
     <form action="search.do">
-      <input class="search-box" type="text" name="query" />
+      <input class="search-box" type="text" name="query" tabindex="1" />
       <input class="search-button" type="submit" name="action" 
              value="Search" />
     </form> 
