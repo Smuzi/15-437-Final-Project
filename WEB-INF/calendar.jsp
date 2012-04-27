@@ -6,6 +6,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div id="calendar-tabs">
   <ul>
@@ -53,6 +54,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -79,6 +83,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -105,6 +112,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -131,6 +141,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -157,6 +170,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -183,6 +199,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
@@ -209,6 +228,9 @@
                        timeZone="${user.timeZone}"
                        pattern="MM-dd-yyyy | h:mm aa" />
                 </span>
+                <div class="air-name">
+                  ${airing.channelNumber} ${airing.channelName}
+                </div>
               </li>
             </c:forEach>
           </ul>
