@@ -1,0 +1,15 @@
+#calendar-tabs li
+{
+  display: inline-block;
+}
+
+#calendar
+{
+  height: 1000px;
+  width: 900px;
+}
+
+#calendar .show-div
+{
+  display: none; 
+}

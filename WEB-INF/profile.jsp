@@ -30,6 +30,11 @@
           $(id).delay(100).fadeIn(200);
           showing = id;
         }
+        else
+        {
+          $(showing).fadeOut(100);
+          showing = "foo";
+        }
       }
     </script> 
   </head>

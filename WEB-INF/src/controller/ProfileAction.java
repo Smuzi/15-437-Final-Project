@@ -26,6 +26,7 @@ import model.AiringDAO;
 import databean.User;
 import databean.Show;
 import databean.Airing;
+import viewmodel.ShowCalVM;
 
 public class ProfileAction extends Action
 {
@@ -57,8 +58,6 @@ public class ProfileAction extends Action
             // Get current user's shows
             int[] showIds = currUser.getShowIds();
             List<Show> shows = new ArrayList<Show>();
-            // Make shows visible to the requester
-            request.setAttribute("shows", shows);
 
             for (int i = 0; i < showIds.length; i++)
             {
@@ -79,36 +78,28 @@ public class ProfileAction extends Action
     private void generateShowTimes(HttpServletRequest request, List<Show> shows)
         throws RollbackException
     {
+        List<ShowCalVM> showCalVMs = new ArrayList<ShowCalVM>();
+
         for (Show show : shows)
         {
-            Airing[] allAirings = airingDAO.readAiringsByShowId(
-                                    show.getId());
+            Airing[] allAirings = airingDAO.readAiringsByShowId(show.getId());
 
-            // Hey... we're tight on time.
-            request.setAttribute("mondayAirings", 
-                                generateOneDay(allAirings, Calendar.MONDAY));
-
-            request.setAttribute("tuesdayAirings", 
-                                generateOneDay(allAirings, Calendar.TUESDAY));
-
-            request.setAttribute("wednesdayAirings", 
-                                generateOneDay(allAirings, Calendar.WEDNESDAY));
-
-            request.setAttribute("thursdayAirings", 
-                                generateOneDay(allAirings, Calendar.THURSDAY));
-
-            request.setAttribute("fridayAirings", 
-                                generateOneDay(allAirings, Calendar.FRIDAY));
-
-            request.setAttribute("saturdayAirings", 
-                                generateOneDay(allAirings, Calendar.SATURDAY));
-
-            request.setAttribute("sundayAirings", 
+            ShowCalVM showCalVM = new ShowCalVM(show,
+                                generateOneDay(allAirings, Calendar.MONDAY),
+                                generateOneDay(allAirings, Calendar.TUESDAY),
+                                generateOneDay(allAirings, Calendar.WEDNESDAY),
+                                generateOneDay(allAirings, Calendar.THURSDAY),
+                                generateOneDay(allAirings, Calendar.FRIDAY),
+                                generateOneDay(allAirings, Calendar.SATURDAY),
                                 generateOneDay(allAirings, Calendar.SUNDAY));
+
+            showCalVMs.add(showCalVM);
         }
+
+        request.setAttribute("showCalVMs", showCalVMs);
     }
 
-    private List<Airing> generateOneDay(Airing[] airings, int day) 
+    private Airing[] generateOneDay(Airing[] airings, int day) 
         throws RollbackException
     {
         // Filtered by what day it is
@@ -125,8 +116,9 @@ public class ProfileAction extends Action
         }
 
         // Sort the airings by start date
-        Arrays.sort((Airing[]) filteredAirings.toArray(), 
-                new Comparator<Airing>()
+        Airing[] filteredAiringsAsArray;
+        filteredAiringsAsArray = filteredAirings.toArray(new Airing[1]);
+        Arrays.sort(filteredAiringsAsArray, new Comparator<Airing>()
                 {
                     public int compare(Airing a1, Airing a2)
                     {
@@ -156,6 +148,6 @@ public class ProfileAction extends Action
                     }
                 });
 
-        return filteredAirings;
+        return filteredAiringsAsArray;
     }
 }
