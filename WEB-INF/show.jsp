@@ -37,16 +37,19 @@
 
       <div id="main-content">
         <div id="show-header">
-          <h3>Modern Family</h3> 
-          5.0/5.0
+          <h3>${show.showName}</h3> 
+          <c:if test="${isFavorite == false}">
+            <a id="add-show" href="addshow.do?id=${show.id}">Add Show</a>
+          </c:if>
+          <div>Fake Rating: 5.0/5.0</div>
         </div>
 
         <div id="show-img">
-          <img src="./amelie_home.jpg">
+          <img src="image.do?id=${show.imageId}">
           </img>
         </div>
         <div id="show-description">
-          foo
+          ${show.description}
         </div>
 
         <div id="show-tabs">
