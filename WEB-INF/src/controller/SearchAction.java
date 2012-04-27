@@ -45,7 +45,6 @@ public class SearchAction extends Action {
         List<String> errors = new ArrayList<String>();
         request.setAttribute("errors", errors);
 
-
         try {
             SearchForm form = formBeanFactory.create(request);
             request.setAttribute("form", form);
@@ -56,7 +55,6 @@ public class SearchAction extends Action {
                 return "search.jsp";
             }
 
-            /* TODO In here, we need to generate search page content. */
             /* Search through shows and find matches */
             Set<Show> shows = new HashSet<Show>();
             request.setAttribute("shows", shows);
