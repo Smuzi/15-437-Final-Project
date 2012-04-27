@@ -23,93 +23,192 @@
   <c:forEach var="showVM" items="${showCalVMs}">
     <div id="foo${showVM.showId}" class="show-div">
       <ul>
+        <li id="calendar-header">
+          <a href="deleteshow.do?id=${showVM.showId}">
+            Delete Show
+          </a>
+          <a href="show.do?id=${showVM.showId}">
+            Go To Show Page
+          </a>
+        </li>
 
         <li>
-          <span>Monday</span>
+          <span id="day">Monday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.mondayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Tuesday</span>
+          <span id="day">Tuesday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.tuesdayAirings}">
-              <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+              <li>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Wednesday</span>
+          <span id="day">Wednesday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.wednesdayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Thursday</span>
+          <span id="day">Thursday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.thursdayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Friday</span>
+          <span id="day">Friday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.fridayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Saturday</span>
+          <span id="day">Saturday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.saturdayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>
         </li>
 
         <li>
-          <span>Sunday</span>
+          <span id="day">Sunday</span>
           <ul>
             <c:forEach var="airing" items="${showVM.sundayAirings}">
               <li class="airing">
-                <span>${airing.startTime}</span>
-                <span>${airing.stopTime}</span>
-                <div>${airing.channelNumber} ${airing.channelName}</div>
+                <span class="air-time">
+                  Start:
+                  <fmt:formatDate
+                       value="${airing.startTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
+                <span class="air-time">
+                  End:
+                  <fmt:formatDate
+                       value="${airing.stopTime}"
+                       type="both"
+                       timeZone="${user.timeZone}"
+                       pattern="MM-dd-yyyy | h:mm aa" />
+                </span>
               </li>
             </c:forEach>
           </ul>

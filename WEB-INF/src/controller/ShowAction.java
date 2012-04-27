@@ -7,6 +7,8 @@
 
 package controller;
 
+import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -50,6 +52,11 @@ public class ShowAction extends Action
         request.setAttribute("errors", errors);
 
         User currUser = (User) session.getAttribute("user");
+
+        if (currUser == null)
+        {
+            return "login.do";
+        }
 
         try
         {
@@ -95,6 +102,37 @@ public class ShowAction extends Action
 
         Airing[] airings = airingDAO.readAiringsByShowIdAndProviderId(
                             showId, providerId);
+
+        Arrays.sort(airings, new Comparator<Airing>()
+            {
+                public int compare(Airing a1, Airing a2)
+                {
+                    if (a1.getStartTime().before(a2.getStartTime()))
+                    {
+                        return -1;
+                    }
+                    else if (a1.getStartTime().after(a2.getStartTime()))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (a1.getStopTime().before(a2.getStopTime()))
+                        {
+                            return -1;
+                        }
+                        else if (a1.getStopTime().after(a2.getStopTime()))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            });
+        
         
         request.setAttribute("airings", airings);
     }

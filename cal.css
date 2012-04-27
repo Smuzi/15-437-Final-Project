@@ -13,3 +13,47 @@
 {
   display: none; 
 }
+
+#calendar li
+{
+  padding: 2px;
+}
+
+#calendar #calendar-header
+{
+  border-width: 1px;
+  border-style: solid;
+}
+
+#calendar #calendar-header a
+{
+  margin-right: 5px;
+}
+
+#calendar #day
+{
+  display: inline-block;
+  border-width: 1px;
+  border-style: solid;
+  margin-bottom: 5px;
+  padding: 1px;
+}
+
+#calendar .airing
+{
+  padding: 2px;
+}
+
+#calendar .air-time
+{
+  display: inline-block;
+  margin-right: 2px;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#calendar .air-name
+{
+  font-weight: bold;
+}

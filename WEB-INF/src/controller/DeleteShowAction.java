@@ -1,7 +1,7 @@
 /**
- * @file   AddShowAction.java
+ * @file   DeleteShowAction.java
  * @author Robert Liu <rql@andrew.cmu.edu>
- * @date   4/26/2012
+ * @date   4/27/2012
  * @class  15-437
  */
 
@@ -21,22 +21,23 @@ import formbean.IdForm;
 import model.Model;
 import model.UserDAO;
 
-public class AddShowAction extends Action
+public class DeleteShowAction extends Action
 {
     private FormBeanFactory<IdForm> formBeanFactory =
             FormBeanFactory.getInstance(IdForm.class);
 
     private UserDAO userDAO;
 
-    public AddShowAction(Model model)
+    public DeleteShowAction(Model model)
     {
         userDAO = model.getUserDAO();
     }
 
-    public String getName() { return "addshow.do"; }
+    public String getName() { return "deleteshow.do"; }
 
     public String perform(HttpServletRequest request)
     {
+
         HttpSession session = request.getSession();
 
         List<String> errors = new ArrayList<String>();
@@ -58,11 +59,10 @@ public class AddShowAction extends Action
             {
                 return "error.jsp";
             }
-            
-            // Try adding show to User bean
-            if (!currUser.addShowId(form.getIdAsInt()))
+
+            if (!currUser.deleteShowId(form.getIdAsInt()))
             {
-                errors.add("Show already favorited");
+                errors.add("Show not favorited");
                 return "error.jsp";
             }
 

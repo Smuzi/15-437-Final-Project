@@ -45,9 +45,7 @@
 
       <div id="main-content">
         <div>
-          <span>
-            <span>${user.username}</span>
-          </span>
+          <h3>Profile for "${user.username}"</h3>
         </div>
 
         <div id="profile-main-container">
