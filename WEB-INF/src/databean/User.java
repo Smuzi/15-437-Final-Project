@@ -36,6 +36,7 @@ public class User
     private String timeZone;
 	@MaxSize(zipcodeLength)
     private String zipcode;
+    private boolean admin;
 
     /* Getters */
     public int getId()             { return id; }
@@ -46,6 +47,7 @@ public class User
     public String getPhoneNumber() { return phoneNumber; }
     public String getTimeZone()    { return timeZone; }
     public String getZipcode()     { return zipcode; }
+    public boolean getAdmin()      { return admin; }
 
     /* Setters */
 
@@ -58,10 +60,12 @@ public class User
                                              { this.phoneNumber = phoneNumber; }
     public void setTimeZone(String timeZone) { this.timeZone = timeZone; }   
     public void setZipcode(String zipcode)   { this.zipcode = zipcode; }
+    public void setAdmin(boolean admin)      { this.admin = admin; }
 
 	/* Functions dealing with this databean */
 	public void init() {
 		setShowIds(new int[0]);
 		setPhoneNumber("");
+        setAdmin(false);
 	}
 }
