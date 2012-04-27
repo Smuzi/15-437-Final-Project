@@ -1,3 +1,3 @@
 #!/bin/bash
 
-$1 -c us -g $2 -d 5 < input
+$1 -c us -g $2 -s $3 -d $4 < input

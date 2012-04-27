@@ -10,7 +10,7 @@ $1 -c us -g $2 < /dev/null | \
 	stdbuf -o0 sed -e '/^\[mc2xml\]/d' > mc2xml_out.txt &
 
 while true; do
-	if [ "`cat mc2xml_out.txt | awk '/^[ ]*[0-9]+/{a=1}/^$/&&a==1{b=1; print NR}END{if (b == 1) print "matched"}'`" != "" ]
+	if [ "`cat mc2xml_out.txt | awk '/^[ ]*[0-9]+/{a=1}/^$/&&a==1{b=1}END{if (b == 1) print "matched"}'`" != "" ]
 	then
 		killall mc2xml
 		break

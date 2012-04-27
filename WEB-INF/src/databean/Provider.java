@@ -8,6 +8,8 @@
 
 package databean;
 
+import java.util.Date;
+
 import org.genericdao.PrimaryKey;
 
 @PrimaryKey("id")
@@ -17,14 +19,17 @@ public class Provider
     private int id;
     private String name;
     private String zipcode;
+    private Date lastSync;
 
     /* Getters */
     public int getId()      { return id; }
     public String getName() { return name; }
     public String getZipcode() { return zipcode; }
+    private Date getLastSync() { return lastSync; }
 
     /* Setters */
     public void setId(int id) { this.id = id; }   
     public void setName(String name) { this.name = name; }   
     public void setZipcode(String zipcode) { this.zipcode = zipcode; }
+    public void setLastSync(Date lastSync) { this.lastSync = lastSync; }
 }

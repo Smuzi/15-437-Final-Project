@@ -30,7 +30,7 @@ public class ProviderDAO extends GenericDAO<Provider>
         super.createAutoIncrement(provider);
     }
 
-    public Provider readByProviderNameAndZipcode(String name, String zipcode)
+    public Provider readByNameAndZipcode(String name, String zipcode)
         throws RollbackException
     {
         Provider[] matchedProviders = super.match(MatchArg.and(

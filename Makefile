@@ -6,7 +6,8 @@ SRC = ./WEB-INF/src/controller/* \
       ./WEB-INF/src/formbean/* \
       ./WEB-INF/src/scripts/* \
       ./WEB-INF/src/daemon/* \
-      ./WEB-INF/src/viewmodel/*
+      ./WEB-INF/src/viewmodel/* \
+      ./WEB-INF/src/util/*
 
 .PHONY: all database clean
 
