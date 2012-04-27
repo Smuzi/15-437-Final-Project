@@ -6,6 +6,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
@@ -54,7 +55,6 @@
               <a href="#" onClick="parentNode.submit()">Upload image</a>
             </form>
           </c:if>
-          <div>Fake Rating: 5.0/5.0</div>
         </div>
 
         <div id="show-img">
@@ -77,26 +77,46 @@
             <li>
               <a href="#" onclick="showDiv('show-times')">Show Times</a>
             </li>
+            <%--
             <li>
               <a href="#" onclick="showDiv('show-reviews')">Reviews</a>
             </li>
+            --%>
           </ul>
         </div>
         <div id="show-info-container">
           <div id="show-times">
             <ul>
               <c:forEach var="airing" items="${airings}">
-                <li>
-                  <span>${airing.startTime}</span>
-                  <span>${airing.stopTime}</span>
-                  <div>${airing.channelNumber} ${airing.channelName}</div>
+                <li class="airing">
+                  <span class="air-time">
+                    Start:
+                    <fmt:formatDate
+                         value="${airing.startTime}"
+                         type="both"
+                         timeZone="${user.timeZone}"
+                         pattern="MM-dd-yyyy | h:mm aa" />
+                  </span>
+                  <span class="air-time">
+                    End:
+                    <fmt:formatDate
+                         value="${airing.stopTime}"
+                         type="both"
+                         timeZone="${user.timeZone}"
+                         pattern="MM-dd-yyyy | h:mm aa" />
+                  </span>
+                  <div class="air-name">
+                    ${airing.channelNumber} ${airing.channelName}
+                  </div>
                 </li>
               </c:forEach>
             </ul>
           </div>
+          <%--
           <div id="show-reviews">
             <h3>i'm a review</h3>
           </div>
+          --%>
         </div>
       </div>
     </div>

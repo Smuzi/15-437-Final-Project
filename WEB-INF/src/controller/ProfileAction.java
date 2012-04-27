@@ -65,8 +65,7 @@ public class ProfileAction extends Action
             }
 
             // Grab airings and package them nicely for the jsp
-            // TODO: don't have providerId yet
-            generateAllAirings(request, shows, 1);
+            generateAllAirings(request, shows, currUser.getProviderId());
 
             return "profile.jsp";
         } catch (Exception e)

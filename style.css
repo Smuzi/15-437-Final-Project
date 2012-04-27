@@ -6,12 +6,6 @@
  * @class   15-437
  */
 
-*
-{
-  border-width: 1px;
-  border-style: solid;
-}
-
 html
 {
   font-size: 12px;
@@ -116,7 +110,7 @@ li
 .search-box
 {
   height: 100%;
-  width: 400px;
+  width: 350px;
   margin-left: 5px;
 }
 
@@ -132,7 +126,14 @@ li
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  width: 230px;
+  width: 250px;
+}
+
+#account-misc a
+{
+  border-width: 1px;
+  border-right: solid;
+  border-left: solid;
 }
 
 /* Main content */
@@ -274,6 +275,25 @@ li
 {
   /* Hide them until we show them manually */
   display: none;
+}
+
+#show #show-info-container .airing
+{
+  padding: 2px;
+}
+
+#show #show-info-container .air-time
+{
+  display: inline-block;
+  margin-right: 2px;
+  padding: 2px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#show #show-info-container .air-name
+{
+  font-weight: bold;
 }
 
 /* settings.jsp */

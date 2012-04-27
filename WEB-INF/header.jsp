@@ -32,6 +32,7 @@
       </c:when>
       <c:otherwise>
         <span>
+          <a href="profile.do">Profile</a>
           <a href="logout.do">Logout</a>
           <a href="settings.do">Account Settings</a>
         </span>
